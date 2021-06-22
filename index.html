@@ -70,18 +70,24 @@
       padding-top: 27px;
       padding-bottom: 27px;
       border-width: 0px;
-      /* background-color: #1ebea5; */
-      border: 1px solid #1ebea5;
-      overflow: hidden;
-      z-index: 2;
-      position: fixed;
+      background-color: #1ebea5;
+      /* border: 1px solid #1ebea5; */
+      overflow: auto;
+      z-index: 99999;
       width: 100%;
+      display: block !important;
+      position: fixed;
     }
 
     body {
       margin: 0px;
       z-index: 1;
     }
+
+    /* .inner {
+      position: relative;
+      text-align: center;
+    } */
 
     .maindata {
       /* position: absolute;
@@ -91,17 +97,17 @@
       -webkit-transform: translateX(-50%) translateY(-50%);
       transform: translateX(-50%) translateY(-50%); */
       position: absolute;
-      top: 50%;
-      -ms-transform: translateY(-70%);
-      transform: translateY(-70%);
-      border: 2px solid red;
-      display: block;
-      padding-top: 50%;
+      top: max(270px,50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      /* border: 2px solid red; */
       /* margin-right: auto;
       margin-left: auto; */
       width: 100%;
       overflow: auto;
-
+      display: block !important;
+      margin:auto;
+      /* padding-top: 100px; */
     }
 
     /* #button,
@@ -138,6 +144,12 @@
       background-color: #01e675;
       border: none;
     }
+
+    input:focus, select:focus { 
+    outline: none !important;
+    /* border-color: #719ECE; */
+    box-shadow: 0 0 10px #00000007;
+}
   </style>
   <body>
     <div class="navbar">
@@ -145,56 +157,58 @@
     </div>
 
     <center>
-      <div class="maindata">
-        <div class="mid">
-          <p class="para">Start texting by entering a number...</p>
-          <input type="text" id="phone" placeholder="Type a number..." />
-          <script>
-            var input = document.getElementById("phone");
+      <div class="inner">
+        <div class="maindata">
+          <div class="mid">
+            <p class="para">Start texting by entering a number...</p>
+            <input type="text" id="phone" placeholder="Type a number..." onblur="this.value=removeSpaces(this.value)"/>
+            <script>
+              var input = document.getElementById("phone");
 
-            function whatsapp() {
-              window.location = "//wa.me/91" + input.value;
-            }
-          </script>
-
-          <script>
-            var input = document.getElementById("phone");
-            input.addEventListener("keyup", function (event) {
-              if (event.keyCode === 13) {
-                event.preventDefault();
-                document.getElementById("button").click();
+              function whatsapp() {
+                window.location = "//wa.me/91" + input.value;
               }
-            });
-          </script>
-          <script language="javascript" type="text/javascript">
-            //script for onblur
-            var spaces = document.getElementById("phone");
+            </script>
 
-            function removeSpaces(string) {
-              return string.split(" ").join("");
-            }
-          </script>
+            <script>
+              var input = document.getElementById("phone");
+              input.addEventListener("keyup", function (event) {
+                if (event.keyCode === 13) {
+                  event.preventDefault();
+                  document.getElementById("button").click();
+                }
+              });
+            </script>
+            <script language="javascript" type="text/javascript">
+              //script for onblur
+              var spaces = document.getElementById("phone");
 
-          <script language="javascript" type="text/javascript">
-            //script for onblur via enter
-            var spaces = document.getElementById("phone");
+              function removeSpaces(string) {
+                return string.split(" ").join("");
+              }
+            </script>
 
-            function removeSpacesEnter(string) {
-              return string.split(" ").join("");
-            }
-          </script>
-        </div>
-        <br />
-        <button
-          onclick="phone.value=removeSpacesEnter(phone.value); whatsapp()"
-          id="button"
-        >
-          CONTINUE TO CHAT
-        </button>
+            <script language="javascript" type="text/javascript">
+              //script for onblur via enter
+              var spaces = document.getElementById("phone");
 
-        <!-- <button onclick="phone.value=removeSpacesEnter(phone.value)" id="button">
+              function removeSpacesEnter(string) {
+                return string.split(" ").join("");
+              }
+            </script>
+          </div>
+          <br />
+          <button
+            onclick="phone.value=removeSpacesEnter(phone.value); whatsapp()"
+            id="button"
+          >
+            CONTINUE TO CHAT
+          </button>
+
+          <!-- <button onclick="phone.value=removeSpacesEnter(phone.value)" id="button">
     Remove Spaces
 </button> -->
+        </div>
       </div>
     </center>
   </body>
