@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Whatsapp Conversation</title>
-<!--     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?"> -->
-<!--     <link rel="shortcut icon" type="image/x-icon" href="https://www.whatsapp.com/favicon.ico?"> -->
+    <!--     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?"> -->
+    <!--     <link rel="shortcut icon" type="image/x-icon" href="https://www.whatsapp.com/favicon.ico?"> -->
 
     <link
       rel="stylesheet"
@@ -22,8 +22,8 @@
     }
 
     * {
-        box-sizing: border-box;
-      }
+      box-sizing: border-box;
+    }
 
     input[type="text"],
     input[type="password"] {
@@ -70,21 +70,38 @@
       padding-top: 27px;
       padding-bottom: 27px;
       border-width: 0px;
-      background-color: #1ebea5;
+      /* background-color: #1ebea5; */
+      border: 1px solid #1ebea5;
       overflow: hidden;
+      z-index: 2;
+      position: fixed;
+      width: 100%;
     }
 
     body {
       margin: 0px;
+      z-index: 1;
     }
 
     .maindata {
-      position: absolute;
+      /* position: absolute;
       top: 50%;
       left: 50%;
       -moz-transform: translateX(-50%) translateY(-50%);
       -webkit-transform: translateX(-50%) translateY(-50%);
-      transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%); */
+      position: absolute;
+      top: 50%;
+      -ms-transform: translateY(-70%);
+      transform: translateY(-70%);
+      border: 2px solid red;
+      display: block;
+      padding-top: 50%;
+      /* margin-right: auto;
+      margin-left: auto; */
+      width: 100%;
+      overflow: auto;
+
     }
 
     /* #button,
@@ -105,8 +122,6 @@
       color: #fff !important;
       border: none;
     } */
-
-
 
     #button,
     #button:visited {
