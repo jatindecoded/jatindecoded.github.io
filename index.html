@@ -164,13 +164,13 @@
           <div class="mid">
             <p class="para">Start texting by entering a number...</p>
             <input type="text" id="phone" placeholder="Type a number..." onblur="this.value=removeSpaces(this.value)"/>
-            <script>
+            <!-- <script>
               var input = document.getElementById("phone");
 
               function whatsapp() {
                 window.location = "//wa.me/91" + input.value;
               }
-            </script>
+            </script> -->
 
             <script>
               var input = document.getElementById("phone");
@@ -225,5 +225,11 @@
       utilsScript:
         "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
     });
+
+    var input = document.getElementById("phone");
+
+       function whatsapp() {
+                window.location = "//wa.me/" + phoneInput.getNumber();
+              }
   </script>
 </html>
