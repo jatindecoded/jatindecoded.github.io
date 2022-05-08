@@ -1,4 +1,4 @@
 # jatindecoded.github.io
 Whatsapp Conversation Initiator
 
-Working Project: https://jatindecoed.github.io
+Working Project: https://jatindecoded.github.io
