@@ -2,39 +2,48 @@ import { Badge } from "@/components/ui/badge";
 
 const faqs = [
   {
-    question: "What is a FAQ and why is it important?",
+    question: "What products does Kenrax Industries manufacture?",
     answer:
-      "FAQ stands for Frequently Asked Questions. It is a list that provides answers to common questions people may have about a specific product, service, or topic.",
+      "Kenrax specializes in manufacturing air filters, oil filters, air-oil separators, and hydraulic filters used in screw air compressors. We supply OEM-compatible parts for brands such as Atlas Copco, Ingersoll Rand, Kaeser, Elgi, and more.",
   },
   {
-    question: "Why should I use a FAQ on my website or app?",
+    question: "Are Kenrax filters compatible with OEM specifications?",
     answer:
-      "Utilizing a FAQ section on your website or app is a practical way to offer instant assistance to your users or customers. Instead of waiting for customer support responses, they can find quick answers to commonly asked questions. ",
+      "Yes, all our filters are engineered to meet or exceed OEM standards, ensuring durability, fit, and performance in demanding industrial environments.",
   },
   {
-    question: "How do I effectively create a FAQ section?",
+    question: "How can I place a bulk order or inquire about pricing?",
     answer:
-      "Creating a FAQ section starts with gathering the most frequent questions you receive from your users or customers. Once you have a list, you need to write clear, detailed, and helpful answers to each question.",
+      "To place bulk orders or request pricing, you can contact us directly at kenraxindustries@gmail.com or call +91 9990249868. We cater to dealers, distributors, and OEMs.",
   },
   {
-    question: "What are the benefits of having a well-maintained FAQ section?",
+    question: "Do you offer custom part numbers or private labeling?",
     answer:
-      "There are numerous advantages to maintaining a robust FAQ section. Firstly, it provides immediate answers to common queries, which improves the user experience.",
+      "Yes, we offer custom part number mapping, labeling, and white-label manufacturing for high-volume buyers or OEM partnerships.",
+  },
+  {
+    question: "Where are Kenrax products shipped from?",
+    answer:
+      "All products are shipped from our facility in New Delhi, India. We ensure secure packaging and reliable logistics for both domestic and international orders.",
+  },
+  {
+    question: "Can I request a sample before bulk purchase?",
+    answer:
+      "Yes, we provide product samples on request to help you verify quality and compatibility before proceeding with larger orders.",
   },
 ];
 
 const Faq5 = () => {
   return (
-    <section className="py-32">
+    <section className="pt-32" id="faq">
       <div className="items-center">
         <div className="text-center">
           <Badge className="text-xs font-medium">FAQ</Badge>
-          <h1 className="mt-4 text-4xl font-bold tracking-tight">
+          <h1 className="mt-4 text-2xl font-bold tracking-tight md:text-4xl">
             Common Questions & Answers
           </h1>
           <p className="mt-6 font-medium text-muted-foreground">
-            Find out all the essential details about our platform and how it can
-            serve your needs.
+            Discover how our high-quality air compressor spares and tailored solutions can meet your specific needs, ensuring efficiency, reliability, and superior performance.
           </p>
         </div>
         <div className="mx-auto mt-14 max-w-screen-sm">

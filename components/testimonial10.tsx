@@ -1,65 +1,67 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface Testimonial10Props {
-  quote?: string;
-  author?: {
-    name: string;
-    role: string;
-    avatar: {
-      src: string;
-      alt: string;
+  testimonials?: {
+    quote: string;
+    author: {
+      name: string;
+      role: string;
+      avatar: {
+        src: string;
+        alt: string;
+      };
     };
-  };
+  }[]
 }
 
 const Testimonial10 = ({
-  quote = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig doloremque mollitia fugiat omnis! Porro facilis quo animi consequatur. Explicabo.",
-  author = {
-    name: "Customer Name",
-    role: "Role",
-    avatar: {
-      src: "https://www.shadcnblocks.com/images/block/avatar-1.webp",
-      alt: "Customer Name",
+  testimonials = [
+    {
+      quote: "Reliable supplier, quick dispatch and the filters are spot on in terms of fit and performance. We’ve shifted most of our orders to Kenrax.",
+      author: {
+        name: "Pradeep Sharma",
+        role: "Maintenance Head, Delhi Tools & Compressors",
+        avatar: {
+          src: "https://www.shadcnblocks.com/images/block/avatar-1.webp",
+          alt: "Customer Name",
+        },
+      },
     },
-  },
+    {
+      quote: "Their support team is responsive and knows their products well. Got custom filters delivered faster than expected. Would recommend for OEM-replacement needs.",
+      author: {
+        name: "Amit Khurana",
+        role: "Procurement Lead, Airtronics Pvt. Ltd.",
+        avatar: {
+          src: "https://www.shadcnblocks.com/images/block/avatar-1.webp",
+          alt: "Customer Name",
+        },
+      },
+    }
+  ]
 }: Testimonial10Props) => {
   return (
     <section className="py-2">
       <div className="items-center">
-        <div className="flex flex-col items-center text-center">
-          <p className="mb-16 max-w-4xl px-8 font-bold tracking-tight lg:text-3xl">
-            &ldquo;{quote}&rdquo;
-          </p>
-          <div className="flex items-center gap-2 md:gap-4">
-            <Avatar className="size-12 md:size-16">
-              <AvatarImage src={author.avatar.src} alt={author.avatar.alt} />
-              <AvatarFallback>{author.name}</AvatarFallback>
-            </Avatar>
-            <div className="text-left">
-              <p className="text-sm font-medium md:text-base">{author.name}</p>
-              <p className="text-sm text-muted-foreground md:text-base">
-                {author.role}
-              </p>
+        {testimonials.map((testimonial, idx) => (
+          <div key={idx} className="mb-4 pt-10 flex flex-col items-center text-center">
+            <p className="mb-4 max-w-4xl px-8 font-bold tracking-tight lg:text-3xl">
+              &ldquo;{testimonial.quote}&rdquo;
+            </p>
+            <div className="flex flex-col items-center md:gap-2">
+              {/* <Avatar className="size-12 md:size-16 items-center">
+                <AvatarImage src={testimonial.author.avatar.src} alt={testimonial.author.avatar.alt} />
+                <AvatarFallback>{testimonial.author.name}</AvatarFallback>
+              </Avatar> */}
+              <div className="center">
+                <p className="text-sm font-medium md:text-base center">{testimonial.author.name}</p>
+                <p className="text-sm text-muted-foreground md:text-base">
+                  {testimonial.author.role}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="pt-10 flex flex-col items-center text-center">
-          <p className="mb-16 max-w-4xl px-8 font-bold tracking-tight lg:text-3xl">
-            &ldquo;{quote}&rdquo;
-          </p>
-          <div className="flex items-center gap-2 md:gap-4">
-            <Avatar className="size-12 md:size-16">
-              <AvatarImage src={author.avatar.src} alt={author.avatar.alt} />
-              <AvatarFallback>{author.name}</AvatarFallback>
-            </Avatar>
-            <div className="text-left">
-              <p className="text-sm font-medium md:text-base">{author.name}</p>
-              <p className="text-sm text-muted-foreground md:text-base">
-                {author.role}
-              </p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

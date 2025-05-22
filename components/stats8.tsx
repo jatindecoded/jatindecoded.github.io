@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 
 interface Stats8Props {
   heading?: string;
@@ -15,41 +14,37 @@ interface Stats8Props {
 }
 
 const Stats8 = ({
-  heading = "Our Performance over the last 2 Decades",
+  heading = "Serving our loyal customers for more than 2 Decades",
   description = "Delivering reliability and scalable supply for industrial needs.",
-  link = {
-    text: "Read the full impact report",
-    url: "https://www.shadcnblocks.com",
-  },
   stats = [
     {
       id: "stat-1",
-      value: "250%+",
-      label: "average growth in user engagement",
+      value: "850+",
+      label: "Trusted Clients",
     },
     {
       id: "stat-2",
-      value: "$2.5m",
-      label: "annual savings per enterprise partner",
+      value: "20+",
+      label: "OEM Brands Supported",
     },
     {
       id: "stat-3",
-      value: "200+",
-      label: "integrations with top industry platforms",
+      value: "550+",
+      label: "Product SKUs in Stock",
     },
     {
       id: "stat-4",
       value: "99.9%",
-      label: "customer satisfaction over the last year",
+      label: "Repeat Order Rate",
     },
   ],
 }: Stats8Props) => {
   return (
-    <section className="py-32">
+    <section className="py-8">
       <div className="items-center">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col">
           <h2 className="text-2xl font-bold md:text-4xl tracking-tight">{heading}</h2>
-          <p>{description}</p>
+          <p className="text-md font-medium">{description}</p>
           {/* <a
             href={link.url}
             className="flex items-center gap-1 font-bold hover:underline"
@@ -62,7 +57,7 @@ const Stats8 = ({
           {stats.map((stat) => (
             <div key={stat.id} className="flex flex-col gap-5">
               <div className="text-6xl font-bold tracking-tight">{stat.value}</div>
-              <p>{stat.label}</p>
+              <p className="tracking-tight font-bold">{stat.label}</p>
             </div>
           ))}
         </div>

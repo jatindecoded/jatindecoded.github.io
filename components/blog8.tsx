@@ -1,6 +1,8 @@
 import { ArrowRight } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
+import Image from "next/image";
+import blogs from "../data/blogs/blogs.json"
 
 interface Post {
   id: string;
@@ -22,43 +24,17 @@ interface Blog8Props {
 
 const Blog8 = ({
   heading = "Blog Posts",
-  description = "Discover the latest insights and tutorials about modern web development, UI design, and component-driven architecture.",
-  posts = [
-    {
-      id: "post-1",
-      title:
-        "Building Modern UIs: A Deep Dive into Shadcn and React Components",
-      summary:
-        "Join us for an in-depth exploration of building modern user interfaces using shadcn/ui and React. Learn best practices and advanced techniques.",
-      label: "Web Design",
-      author: "Sarah Chen",
-      published: "15 Feb 2024",
-      url: "https://shadcnblocks.com",
-      image: "https://shadcnblocks.com/images/block/placeholder-dark-1.svg",
-      tags: ["Web Design", "UI Development"],
-    },
-    {
-      id: "post-2",
-      title: "Mastering Tailwind CSS: From Basics to Advanced Techniques",
-      summary:
-        "Discover how to leverage the full power of Tailwind CSS to create beautiful, responsive websites with clean and maintainable code.",
-      label: "Web Design",
-      author: "Michael Park",
-      published: "22 Feb 2024",
-      url: "https://shadcnblocks.com",
-      image: "https://shadcnblocks.com/images/block/placeholder-dark-1.svg",
-      tags: ["Web Design", "CSS"],
-    },
-  ],
+  description = "Explore the newest insights, practical guides, and expert tips on air‑compressor filtration, maintenance, and OEM‑grade replacement parts—everything you need to keep your compressors running at peak efficiency.",
 }: Blog8Props) => {
+  const posts = blogs;
   return (
-    <section className="py-32">
+    <section className="py-8">
       <div className="container flex flex-col items-center gap-16">
         <div className="text-center">
           <h2 className="mx-auto mb-6 text-3xl font-bold tracking-tight text-pretty md:text-4xl lg:max-w-3xl">
             {heading}
           </h2>
-          <p className="mx-auto max-w-2xl text-muted-foreground md:text-lg">
+          <p className="mx-auto max-w-2xl text-muted-foreground text-sm md:text-md">
             {description}
           </p>
         </div>
@@ -71,33 +47,39 @@ const Blog8 = ({
             >
               <div className="grid gap-y-6 sm:grid-cols-10 sm:gap-x-5 sm:gap-y-0 md:items-center md:gap-x-8 lg:gap-x-12">
                 <div className="sm:col-span-5">
-                  <div className="mb-4 md:mb-6">
+                  {/* <div className="mb-4 md:mb-6">
                     <div className="flex flex-wrap gap-3 text-xs tracking-wider text-muted-foreground uppercase md:gap-5 lg:gap-6">
                       {post.tags?.map((tag) => <span key={tag}>{tag}</span>)}
                     </div>
-                  </div>
-                  <h3 className="text-xl font-semibold md:text-2xl lg:text-3xl">
+                  </div> */}
+                  <h3 className="text-xl font-bold tracking-tight md:text-2xl lg:text-3xl">
                     <a
-                      href={post.url}
+                      href={"/blogs/" + post.slug}
                       target="_blank"
-                      className="hover:underline"
+                      className="hover:underline tracking-tight"
                     >
                       {post.title}
                     </a>
                   </h3>
                   <p className="mt-4 text-muted-foreground md:mt-5">
-                    {post.summary}
+                    {post.content.map((block) =>
+                      (block["paragraph"]?.rich_text ?? [])
+                        .map((rt: any) => rt.plain_text)
+                        .join('')
+                    ).join('').slice(0, 100)}...
                   </p>
                   <div className="mt-6 flex items-center space-x-4 text-sm md:mt-8">
-                    <span className="text-muted-foreground">{post.author}</span>
-                    <span className="text-muted-foreground">•</span>
                     <span className="text-muted-foreground">
-                      {post.published}
+                      Published on: {new Date(post.createdAt).toLocaleDateString('en-GB', {
+                        day: '2-digit',
+                        month: 'short',
+                        year: 'numeric',
+                      })}
                     </span>
                   </div>
                   <div className="mt-6 flex items-center space-x-2 md:mt-8">
                     <a
-                      href={post.url}
+                      href={"/blogs/" + post.slug}
                       target="_blank"
                       className="inline-flex items-center font-semibold hover:underline md:text-base"
                     >
@@ -107,10 +89,10 @@ const Blog8 = ({
                   </div>
                 </div>
                 <div className="order-first sm:order-last sm:col-span-5">
-                  <a href={post.url} target="_blank" className="block">
+                  <a href={"/blogs/" + post.slug} target="_blank" className="block">
                     <div className="aspect-[16/9] overflow-clip rounded-lg border border-border">
                       <img
-                        src={post.image}
+                        src={post.coverImage}
                         alt={post.title}
                         className="h-full w-full object-cover transition-opacity duration-200 fade-in hover:opacity-70"
                       />

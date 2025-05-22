@@ -1,6 +1,9 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { Download, PhoneOutgoing } from "lucide-react";
+import properties from "../data/properties.json"
 
 interface Testimonial {
   quote: string;
@@ -15,13 +18,18 @@ interface Testimonial {
 
 interface Hero151Props {
   heading?: string;
+  heading2?: string;
   description?: string;
   button?: {
     text: string;
     url: string;
   };
+  button2?: {
+    text: string;
+    url: string;
+  };
   testimonial?: Testimonial;
-  images: {
+  images?: {
     first: string;
     second: string;
     third: string;
@@ -31,10 +39,15 @@ interface Hero151Props {
 
 const Hero151 = ({
   heading = "Air Filters; Oil Filters; Separators & more",
+  heading2 = "for Screw Compressors",
   description = "Precision-crafted filtration solutions for every compressor need. Built for performance, priced for value.",
   button = {
-    text: "Contact Us",
-    url: "#",
+    text: "Get Quote",
+    url: `https://wa.me/91${properties["contact.phone.whatsapp"].value}?text=Hello%20Kenrax`
+  },
+  button2 = {
+    text: "Product Catalog",
+    url: "/media/catalog.pdf",
   },
   testimonial = {
     quote: "Kenrax filters have matched OEM quality at better pricing — they've become our go-to supplier.",
@@ -48,32 +61,82 @@ const Hero151 = ({
     ],
   },
   images = {
-    first: "https://shadcnblocks.com/images/block/placeholder-1.svg",
-    second: "https://shadcnblocks.com/images/block/placeholder-dark-2.svg",
-    third: "https://shadcnblocks.com/images/block/placeholder-dark-3.svg",
-    fourth: "https://shadcnblocks.com/images/block/placeholder-dark-7-tall.svg",
+    first: properties["media.homepage.photo.1"].media[0],
+    second: properties["media.homepage.photo.2"].media[0],
+    third: properties["media.homepage.photo.3"].media[0],
+    fourth: properties["media.homepage.photo.4"].media[0],
   },
 }: Hero151Props) => {
   return (
-    <section className="py-12 md:py-20">
+    <section className="py-12">
       <div className="items-center">
-        <div className="flex flex-col items-center gap-8 md:flex-row">
-          <div className="flex-1">
+        <div className="flex flex-col items-center gap-8 md:flex-row-reverse">
+          <div className="w-full flex-1 max-w-[50rem]">
+            <div className="h-full w-full md:aspect-1/1">
+              <div className="grid h-full w-full grid-cols-2 grid-rows-1 md:grid-rows-2 gap-[3.5%]">
+                <div className="aspect-5/4 md:aspect-auto overflow-hidden rounded-[5.2%] border border-muted bg-muted">
+                  <img
+                    src={images.first}
+                    alt=""
+                    className="object-cover h-full w-full object-center"
+                  />
+                </div>
+                <div className="aspect-5/4 md:aspect-auto md:overflow-hidden rounded-[5.2%] border border-muted bg-muted">
+                  <img
+                    src={images.second}
+                    alt=""
+                    className="object-cover h-full w-full object-center"
+                  />
+                </div>
+                <div className="hidden md:block overflow-hidden rounded-[5.2%] border border-muted bg-muted">
+                  <img
+                    src={images.third}
+                    alt=""
+                    className="object-cover h-full w-full object-center"
+                  />
+                </div>
+                <div className="hidden md:block overflow-hidden rounded-[5.2%] border border-muted bg-muted">
+                  <img
+                    src={images.fourth}
+                    alt=""
+                    className="object-cover h-full w-full object-center"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex-1 w-full">
             <div className="flex flex-col gap-4 lg:gap-8">
-              <h1 className="max-w-[80%] text-4xl leading-tighter font-bold text-foreground lg:text-5xl xl:text-7xl font-black tracking-tighter">
-                {heading}
-              </h1>
-              <p className="text-lg text-muted-foreground xl:text-2xl">
+              <div className="flex flex-col gap-1 lg:gap-2">
+                <h1 className="max-w-[80%] text-4xl leading-tighter font-bold text-foreground lg:text-5xl font-black tracking-tighter">
+                  {heading}
+                </h1>
+                <h1 className="max-w-[80%] text-2xl leading-tighter font-bold text-foreground lg:text-3xl font-black tracking-tighter">
+                  {heading2}
+                </h1>
+              </div>
+              <p className="hidden md:block text-md text-muted-foreground">
                 {description}
               </p>
+              <a href={`tel:+91-${properties["contact.phone.visible"].value}`} className="lg:my-[-20px] font-bold ">
+                <div className="flex gap-1 items-center">
+                  <PhoneOutgoing size={16} />
+                  <div>
+                    +91-{properties["contact.phone.visible"].value}
+                  </div>
+                </div>
+              </a>
             </div>
-            <div className="my-6 lg:my-10">
+            <div className="my-6 lg:my-10 gap-4 gap-y-2 flex flex-wrap">
               <Button asChild size="lg">
-                <a href={button.url}>{button.text}</a>
+                <a href={button.url} target="_blank">{button.text}</a>
+              </Button>
+              <Button asChild size="lg" variant='outline'>
+                <a href={button2.url} target="_blank"><Download />{button2.text}</a>
               </Button>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <div className="relative flex -space-x-[1.5rem]">
+              {/* <div className="relative flex -space-x-[1.5rem]">
                 {testimonial.avatars.map((avatar, index) => (
                   <Avatar
                     key={index}
@@ -83,7 +146,7 @@ const Hero151 = ({
                     <AvatarFallback>{avatar.fallback}</AvatarFallback>
                   </Avatar>
                 ))}
-              </div>
+              </div> */}
               <div>
                 <p className="mb-1 text-sm text-muted-2-foreground italic">
                   &quot;{testimonial.quote}&quot;
@@ -93,59 +156,6 @@ const Hero151 = ({
                   {testimonial.company}
                 </p>
               </div>
-            </div>
-          </div>
-          <div className="w-full flex-1">
-            <div className="w-full max-w-[50rem]">
-              <AspectRatio ratio={1 / 1} className="h-full w-full">
-                <div className="grid h-full w-full grid-cols-2 grid-rows-2 gap-[3.5%]">
-                  <div className="overflow-hidden rounded-[5.2%] border border-muted bg-muted">
-                    <img
-                      src={images.first}
-                      alt=""
-                      className="object-fit h-full w-full object-center"
-                    />
-                  </div>
-                  <div className="relative overflow-hidden rounded-[5.2%] border border-muted bg-muted">
-                    <div className="absolute top-1/2 left-[5%] w-[110%] max-w-[25rem] -translate-y-1/2 overflow-hidden rounded-md">
-                      <AspectRatio ratio={1.739130435 / 1}>
-                        <img
-                          src={images.second}
-                          alt=""
-                          className="size-full object-cover object-center"
-                        />
-                      </AspectRatio>
-                    </div>
-                  </div>
-                  <div className="relative overflow-hidden rounded-[5.2%] border border-muted bg-muted">
-                    <div className="absolute top-[9%] left-[9%] w-[200%] max-w-[37.5rem] overflow-hidden rounded-md">
-                      <AspectRatio ratio={1.6 / 1}>
-                        <img
-                          src={images.third}
-                          alt=""
-                          className="size-full object-cover object-center"
-                        />
-                      </AspectRatio>
-                    </div>
-                  </div>
-                  <div className="relative overflow-hidden rounded-[5.2%] border border-muted bg-muted">
-                    <div className="relative top-[12%] left-[50%] w-[70%] max-w-[17.5rem] -translate-x-[50%]">
-                      <AspectRatio ratio={0.52 / 1}>
-                        <img
-                          src="https://shadcnblocks.com/images/block/mockups/phone-1.png"
-                          alt=""
-                          className="absolute z-20 w-full"
-                        />
-                        <img
-                          src={images.fourth}
-                          alt=""
-                          className="absolute z-10 w-full rounded-[16%]"
-                        />
-                      </AspectRatio>
-                    </div>
-                  </div>
-                </div>
-              </AspectRatio>
             </div>
           </div>
         </div>

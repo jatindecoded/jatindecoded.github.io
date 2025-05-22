@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1ed9473a-31b3-8049-824d-d0887686f3f9",
+    "partNumber": "Test Name 001",
+    "type": "Air Oil Separator",
+    "OEMs": [
+      "Test OEM"
+    ],
+    "compatibleWith": [
+      "Test Application Machine 01"
+    ],
+    "images": [
+      "/media/61724159-4a7a-4025-8242-2095935bc963-kx-aos15.png",
+      "/media/54c23fbc-3cf1-4ff1-ba16-3c28a9ab7647-x017503.png"
+    ],
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "priority": 1,
+    "url": "/product/test-name-001"
+  },
+  {
+    "id": "1f09473a-31b3-80bf-a1c8-cf18b303d440",
+    "partNumber": "Test Name 002",
+    "type": "Air Filter",
+    "OEMs": [
+      "Test OEM"
+    ],
+    "compatibleWith": [
+      "Test Application Machine 01"
+    ],
+    "images": [
+      "/media/61724159-4a7a-4025-8242-2095935bc963-kx-aos15.png",
+      "/media/54c23fbc-3cf1-4ff1-ba16-3c28a9ab7647-x017503.png"
+    ],
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "priority": 2,
+    "url": "/product/test-name-002"
+  },
+  {
+    "id": "1f09473a-31b3-80aa-8da8-c86160ab25f1",
+    "partNumber": "Test Name 003",
+    "type": "Oil Filter",
+    "OEMs": [
+      "Test OEM"
+    ],
+    "compatibleWith": [
+      "Test Application Machine 01"
+    ],
+    "images": [
+      "/media/61724159-4a7a-4025-8242-2095935bc963-kx-aos15.png",
+      "/media/54c23fbc-3cf1-4ff1-ba16-3c28a9ab7647-x017503.png"
+    ],
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "priority": null,
+    "url": "/product/test-name-003"
+  }
+]

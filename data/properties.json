@@ -1,0 +1,131 @@
+{
+  "contact.location": {
+    "id": "1fb9473a-31b3-80d2-b917-d143588d919b",
+    "key": "contact.location",
+    "media": [],
+    "value": "https://g.co/kgs/wWSrFJp"
+  },
+  "contact.address": {
+    "id": "1fb9473a-31b3-802c-8b43-e5a288aaf276",
+    "key": "contact.address",
+    "media": [],
+    "value": "Kenrax Office\nDwarka, New Delhi"
+  },
+  "contact.email": {
+    "id": "1fb9473a-31b3-80f6-aa95-ef28c12acb0e",
+    "key": "contact.email",
+    "media": [],
+    "value": "jatin.kenrax@gmail.com"
+  },
+  "media.catalog": {
+    "id": "1fa9473a-31b3-8045-9b9d-df5dcb47ad38",
+    "key": "media.catalog",
+    "media": [
+      "/media/catalog.pdf"
+    ],
+    "value": ""
+  },
+  "media.oem.logos": {
+    "id": "1fa9473a-31b3-8003-80a4-c3af2679d97f",
+    "key": "media.oem.logos",
+    "media": [
+      "/media/04ded53f-d5b6-4203-b96c-f7043ab28bbc-kisspng-pneumatics-pneumatic-tool-chicago-pneumatic-cp7748-5b37f3db29ffa6-759448301530393563172.png",
+      "/media/18ada73f-55c7-426d-bad9-c0a597f9499f-ingersoll-rand-logo-1.png",
+      "/media/ef1971d5-6f1e-4092-95aa-b5dfdc637c5d-atlas-copco-logo.png",
+      "/media/d0fb3b64-add9-4bab-9bcc-03967f3cd7d2-kirloskar-group-logo-wine.png",
+      "/media/0f7ef368-27ff-43c5-9f1c-4db1268af282-elgiequip-ns-big.png",
+      "/media/2559a029-20a7-4489-a03c-bc2339d98e92-compair.svg",
+      "/media/b26edefd-0d57-48b5-8b10-6bfd0d6298fd-fs-curtis-air-compressors.jpg",
+      "/media/3f0cf0ee-170d-4bbe-a603-0cf0bec684a3-gardner-denver-inc-logo-vector.png"
+    ],
+    "value": ""
+  },
+  "contact.phone.hidden": {
+    "id": "1fa9473a-31b3-807c-86c8-e535ed5713fa",
+    "key": "contact.phone.hidden",
+    "media": [],
+    "value": "9810329240"
+  },
+  "contact.phone.whatsapp": {
+    "id": "1fa9473a-31b3-8014-9711-eb5d58d863cb",
+    "key": "contact.phone.whatsapp",
+    "media": [],
+    "value": "9810329240"
+  },
+  "contact.phone.visible": {
+    "id": "1fa9473a-31b3-80ee-a123-fb95040212bd",
+    "key": "contact.phone.visible",
+    "media": [],
+    "value": "9810329240"
+  },
+  "link.linkedin": {
+    "id": "1fa9473a-31b3-8086-a056-d6a34a99d5ea",
+    "key": "link.linkedin",
+    "media": [],
+    "value": "https://www.linkedin.com/company/kenrax"
+  },
+  "link.instagram": {
+    "id": "1fa9473a-31b3-8046-ab9e-f515f342b2ed",
+    "key": "link.instagram",
+    "media": [],
+    "value": "https://www.instagram.com/kenraxindustries/"
+  },
+  "link.facebook": {
+    "id": "1fa9473a-31b3-80ba-9f72-ecba15192b0d",
+    "key": "link.facebook",
+    "media": [],
+    "value": "https://www.facebook.com/kenraxindustries/"
+  },
+  "company.name": {
+    "id": "1f39473a-31b3-803c-8b98-f4483cbf856e",
+    "key": "company.name",
+    "media": [],
+    "value": "Kenrax Industries"
+  },
+  "domain": {
+    "id": "1f29473a-31b3-8014-bfc5-e5ae8064a7c9",
+    "key": "domain",
+    "media": [],
+    "value": "https://www.kenraxindustries.com"
+  },
+  "media.homepage.photo.4": {
+    "id": "1f29473a-31b3-80bf-924f-cd15beb4d872",
+    "key": "media.homepage.photo.4",
+    "media": [
+      "/media/10a7ee2e-8790-4d2a-b78a-58bfca229b9b-kx-aos15.png"
+    ],
+    "value": ""
+  },
+  "media.homepage.photo.3": {
+    "id": "1f29473a-31b3-803d-8a54-e5e6c0459551",
+    "key": "media.homepage.photo.3",
+    "media": [
+      "/media/36bc3244-8144-4b16-8645-36ee0f6cea82-general-2.png"
+    ],
+    "value": ""
+  },
+  "media.homepage.photo.2": {
+    "id": "1f29473a-31b3-80d1-8244-e71ecd93b5b9",
+    "key": "media.homepage.photo.2",
+    "media": [
+      "/media/8e09c5a0-39a4-436a-97e0-6d8c149cb9be-general.png"
+    ],
+    "value": ""
+  },
+  "media.logo": {
+    "id": "1f29473a-31b3-80ef-8193-c611498fc3f5",
+    "key": "media.logo",
+    "media": [
+      "/media/07829140-f5dc-49bc-b59f-44947704e584-logo.png"
+    ],
+    "value": ""
+  },
+  "media.homepage.photo.1": {
+    "id": "1f29473a-31b3-8083-bd3e-f0df32431744",
+    "key": "media.homepage.photo.1",
+    "media": [
+      "/media/01a7995a-264c-48dc-8734-1b5b33f73251-general-3.png"
+    ],
+    "value": ""
+  }
+}

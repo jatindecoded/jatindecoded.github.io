@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
 
 import { buttonVariants } from "@/components/ui/button";
+import { Separator } from "./ui/separator";
+import { Product } from "@/scripts/fetchNotionProducts";
 
 interface JobOpening {
   title: string;
@@ -14,11 +16,13 @@ interface JobCategory {
 }
 
 interface Careers4Props {
+  product: Product
   heading?: string;
   jobs?: JobCategory[];
 }
 
 const Careers4 = ({
+  product,
   heading = "Product Details",
   jobs = [
     {
@@ -64,26 +68,61 @@ const Careers4 = ({
   ],
 }: Careers4Props) => {
   return (
-    <section className="py-32">
+    <section className="py-4">
       <div className="items-center">
-        <div className="mx-auto max-w-screen-lg">
-          <div className="text-center lg:text-left">
-            <h1 className="text-left text-3xl font-bold tracking-tight md:text-4xl">
+        <div className="mx-auto">
+          <div className="text-center">
+            <h1 className="font-bold tracking-tight text-2xl">
               {heading}
             </h1>
           </div>
-          <div className="mx-auto mt-6 flex flex-col gap-16 md:mt-14">
+          <div className="text-center py-2 flex flex justify-around flex-wrap gap-6 gap-y-2">
+            <div className="py-4">
+              <h2 className="font-bold tracking-tight text-xl text-muted-foreground">
+                OEM
+              </h2>
+              <Separator className="mb-2" />
+              <div className="flex-col">
+                {
+                  product.OEMs.map((OEM) => {
+                    return (
+                      <p className="font-bold">
+                        {OEM}
+                      </p>
+                    )
+                  })
+
+                }
+              </div>
+            </div>
+            <div className="py-4">
+              <h2 className="font-bold tracking-tight text-xl text-muted-foreground">
+                Compatible with
+              </h2>
+              <Separator className="mb-2" />
+              <div className="flex-col">
+                {
+                  product.compatibleWith.map((c) => {
+                    return (
+                      <p className="font-bold">
+                        {c}
+                      </p>
+                    )
+                  })
+
+                }
+              </div>
+            </div>
+          </div>
+          {/* <div className="mx-auto flex flex-col gap-16 mt-6">
             {jobs.map((jobCategory) => (
               <div key={jobCategory.category} className="grid">
-                <h2 className="border-b pb-4 text-xl font-bold">
-                  {jobCategory.category}
-                </h2>
                 {jobCategory.openings.map((job) => (
                   <div
                     key={job.title}
                     className="flex items-center justify-between border-b py-4 hover:underline font-semibold"
                   >
-                      {job.title}
+                    {job.title}
                     <div
                       className={cn(
                         buttonVariants({
@@ -99,7 +138,7 @@ const Careers4 = ({
                 ))}
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

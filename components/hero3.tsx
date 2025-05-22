@@ -1,10 +1,17 @@
+"use client"
 import { ArrowDownRight, Star } from "lucide-react";
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { Product } from "@/scripts/fetchNotionProducts";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
+import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 
 interface Hero3Props {
-  productName?: string;
+  product: Product | undefined
   heading?: string;
   description?: string;
   buttons?: {
@@ -28,16 +35,15 @@ interface Hero3Props {
 }
 
 const Hero3 = ({
-  productName = "name",
-  heading = `Product ${productName}`,
-  description = "Finely crafted components built with React, Tailwind and Shadcn UI. Developers can copy and paste these blocks directly into their project.",
+  product,
+  description,
   buttons = {
     primary: {
-      text: "Sign Up",
+      text: "Buy Now",
       url: "https://www.shadcnblocks.com",
     },
     secondary: {
-      text: "Get Started",
+      text: "Check Price",
       url: "https://www.shadcnblocks.com",
     },
   },
@@ -72,13 +78,13 @@ const Hero3 = ({
     <section>
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20 pt-12">
         <div className="mx-auto order-1 lg:order-0 flex flex-col items-center text-center md:ml-auto lg:max-w-3xl lg:items-start lg:text-left">
-          <h1 className="my-6 text-4xl font-bold tracking-tight lg:text-6xl xl:text-7xl">
-            {heading}
+          <h1 className="mt-6 text-lg uppercase font-semibold text-muted-foreground">
+            {product?.type}
           </h1>
-          <p className="mb-8 max-w-xl text-muted-foreground lg:text-xl">
-            {description}
-          </p>
-          <div className="mb-12 flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
+          <h1 className="text-4xl font-bold tracking-tight">
+            {product?.partNumber}
+          </h1>
+          <div className="my-8 flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
             {buttons.primary && (
               <Button asChild className="w-full sm:w-auto">
                 <a href={buttons.primary.url}>{buttons.primary.text}</a>
@@ -94,13 +100,13 @@ const Hero3 = ({
             )}
           </div>
           <div className="mb-12 flex w-fit flex-col items-center gap-4 sm:flex-row">
-            <span className="inline-flex items-center -space-x-4">
+            {/* <span className="inline-flex items-center -space-x-4">
               {reviews.avatars.map((avatar, index) => (
                 <Avatar key={index} className="size-12 border">
                   <AvatarImage src={avatar.src} alt={avatar.alt} />
                 </Avatar>
               ))}
-            </span>
+            </span> */}
             <div>
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, index) => (
@@ -118,13 +124,41 @@ const Hero3 = ({
               </p>
             </div>
           </div>
+          <p className="mb-8 max-w-xl text-sm text-muted-foreground">
+            {product?.description}
+          </p>
         </div>
-        <div className="flex order-0 lg:order-1">
-          <img
-            src="https://www.shadcnblocks.com/images/block/placeholder-1.svg"
-            alt="placeholder hero"
-            className="max-h-[30vh] md:max-h-[50vh] w-full rounded-md"
-          />
+        <div className="flex justify-center items-start lg:mt-8 h-full order-0 lg:order-1 px-12">
+          <Carousel>
+            <CarouselContent>
+              {product?.images?.map((image => {
+                return (
+                  <CarouselItem className="place-items-center flex justify-center">
+                    <Dialog>
+                      <DialogTrigger className="place-items-center">
+                        <img
+                          src={image}
+                          alt="placeholder hero"
+                          className="max-h-[40vh] zoom-image md:max-h-[50vh] rounded-md"
+                        />
+                      </DialogTrigger>
+                      <DialogContent className="place-items-center">
+                        <img
+                          src={image}
+                          alt="placeholder hero"
+                          className="max-h-[100vh] rounded-md"
+                        />
+                      </DialogContent>
+                    </Dialog>
+
+                  </CarouselItem>
+
+                )
+              }))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </div>
     </section>

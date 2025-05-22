@@ -1,53 +1,110 @@
-import { Dribbble, Github, Linkedin } from "lucide-react";
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { people } from "./people";
+"use client"
+import { BoxSelect, Circle, Italic, Search, SeparatorHorizontal } from "lucide-react";
+import Image from "next/image";
 import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Toggle } from "./ui/toggle";
+import { Product, toKebabCase } from "@/scripts/fetchNotionProducts";
+import Fuse from 'fuse.js';
+import { useMemo, useState } from 'react';
+import { Badge } from "./ui/badge";
+import { Table, TableBody, TableCell, TableRow } from "./ui/table";
+import { Separator } from "./ui/separator";
+import ProductCard from "./productCard";
+import properties from "../data/properties.json"
 
 
+interface ProductPageInterface {
+  products: Product[] | undefined;
+  fallback: string;
+}
 
-const Team2 = () => {
+const Team2 = ({ products, fallback = 'https://picsum.photos/id/237/400/900' }: ProductPageInterface) => {
+  if (!products) {
+    return null
+  }
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
+
+  const handleToggle = (filter: string) => {
+    setActiveFilters(prev =>
+      prev.includes(filter)
+        ? prev.filter(f => f !== filter)
+        : [...prev, filter]
+    );
+  };
+
+  const fuse = useMemo(() => {
+    return new Fuse(products, {
+      keys: ['partNumber', 'type', 'OEM', 'compatibleWith'],
+      threshold: 0.4, // adjust for fuzziness (0 = exact, 1 = very fuzzy)
+    });
+  }, [products]);
+
+  const results = searchQuery
+    ? fuse
+      .search(searchQuery)
+      .map(result => result.item)
+      .filter(product =>
+        activeFilters.length === 0 ? true : activeFilters.includes(product.type.toLowerCase())
+      )
+    : products.filter(product =>
+      activeFilters.length === 0 ? true : activeFilters.includes(product.type.toLowerCase())
+    );
+
+  const allTypes = new Set(products.map(p => p.type));
+
+  const descMaxLength = 80;
   return (
-    <section className="py-32 items-center">
+    <section className="py-16 items-center">
       <div className="items-center flex flex-col items-start text-left">
-        <p className="semibold">Our team</p>
-        <h2 className="my-6 text-2xl font-bold tracking-tight text-pretty lg:text-4xl">
-          The team you&apos;ll be working with
+        <h2 className="text-4xl font-bold tracking-tight text-pretty lg:text-4xl">
+          Our Products
         </h2>
-        <p className="mb-8 max-w-3xl text-muted-foreground lg:text-xl">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </p>
+        <p className="mb-6 semibold text-md text-muted-foreground">We manufacture all of these.</p>
+        <p className="semibold text-muted-foreground text-xs mb-1">Filter by Product Type:</p>
+        <div className="flex gap-2 flex-wrap items-center mb-4">
+          {
+            Array.from(allTypes)?.map((p) => {
+              return (
+                <Toggle
+                  variant={'outline'}
+                  className="font-bold uppercase text-xs data-[state=on]:bg-primary data-[state=on]:text-background cursor-pointer"
+                  aria-label="Toggle italic"
+                  pressed={activeFilters.includes(p.toLowerCase())}
+                  onPressedChange={() => handleToggle(p.toLowerCase())}
+                >
+                  {/* <Circle fontSize={8} /> */}
+                  {p.toUpperCase()}
+                </Toggle>
+
+              )
+            })
+          }
+
+
+        </div>
+        <div className="w-full relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-3 w-3" />
+          <Input
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search for a product. (Eg. B006700770010)"
+            className="pl-8 placeholder:italic text-xs!" />
+
+        </div>
       </div>
-      <div className="items-center mt-16 grid gap-x-12 gap-y-16 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {people.map((person) => (
-          <div key={person.id} className="flex flex-col lg:items-start items-center h-full justify-start">
-            <Avatar className="mb-4 size-20 md:mb-5 lg:size-24">
-              <AvatarImage src={person.avatar} />
-              <AvatarFallback>{person.name}</AvatarFallback>
-            </Avatar>
-            <p className="font-bold tracking-tighter">{person.name}</p>
-            <p className="text-muted-foreground text-xs uppercase">{person.role}</p>
-            <p className="py-3 text-sm text-muted-foreground text-center lg:text-left">
-              {person.description}
-            </p>
-            <div className="mt-2 flex flex-col justify-end items-stretch w-full gap-2 flex-1 items-end">
-              <Button key = {person.id}>Buy Now</Button>
-              <Button key = {person.id} variant={"outline"}>Get Price</Button>
-              {/* <a href="#">
-                <Github className="size-5 text-muted-foreground" />
-              </a>
-              <a href="#">
-                <Linkedin className="size-5 text-muted-foreground" />
-              </a>
-              <a href="#">
-                <Dribbble className="size-5 text-muted-foreground" />
-              </a> */}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
+      <div className="items-center mt-16 grid gap-x-12 gap-y-16 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        {results?.map((product: Product) => {
+          return (
+            <ProductCard product={product} fallback={properties["media.homepage.photo.1"].media[0]} descMaxLength={descMaxLength} />
+          )
+        }
+        )}
+      </div >
+    </section >
   );
 };
 
 export { Team2 };
+
