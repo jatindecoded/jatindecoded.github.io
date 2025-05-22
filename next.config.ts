@@ -7,9 +7,9 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  basePath: '/kenrax',
-  assetPrefix: '/kenrax/',
-  trailingSlash: true,
+  // basePath: '/kenrax',
+  // assetPrefix: '/kenrax/',
+  // trailingSlash: true,
   images: { unoptimized: true },
 };
 

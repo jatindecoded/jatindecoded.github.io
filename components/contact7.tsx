@@ -14,7 +14,7 @@ const Contact7 = () => {
           </p>
         </div>
         <div className="grid gap-10 md:grid-cols-3">
-          <div>
+          <a href={`tel:+91-${properties["contact.phone.visible"].value}`} className=" hover:underline">
             <span className="mb-3 flex size-12 bg-(--color-primary) flex-col items-center justify-center rounded-xl text-white">
               <img src={"/whatsapp.svg"} className="h-6 w-auto text-white!" />
             </span>
@@ -22,12 +22,12 @@ const Contact7 = () => {
             <p className="mb-4 text-muted-foreground text-sm">
               We&apos;re available Mon-Fri, 10am-6pm.
             </p>
-            <a href={`tel:+91-${properties["contact.phone.visible"].value}`} className="font-bold hover:underline">
+            <div className="font-bold">
               {/* <a href={`https://wa.me/91${properties["contact.phone.whatsapp"].value}?text=Hello%20Kenrax`} className="font-bold hover:underline"> */}
               +91-{properties["contact.phone.whatsapp"].value}
-            </a>
-          </div>
-          <div>
+            </div>
+          </a>
+          <a href={`mailto:${properties["contact.email"].value}`} className="hover:underline">
             <span className="mb-3 flex size-12 bg-(--color-primary) flex-col items-center justify-center rounded-xl text-white">
               <Mail className="h-6 w-auto" />
             </span>
@@ -35,10 +35,10 @@ const Contact7 = () => {
             <p className="mb-4 text-muted-foreground text-sm">
               Our team is ready to assist.
             </p>
-            <a href={`mailto:${properties["contact.email"].value}`} className="font-bold hover:underline">
+            <div className="font-bold">
               {properties["contact.email"].value}
-            </a>
-          </div>
+            </div>
+          </a>
           {/* <div>
             <span className="mb-3 flex size-12 bg-(--color-primary) flex-col items-center justify-center rounded-xl text-white">
               <Phone className="h-6 w-auto" />
@@ -51,7 +51,7 @@ const Contact7 = () => {
               +91-{properties["contact.phone.visible"].value}
             </a>
           </div> */}
-          <div>
+          <a target="_blank" href={`${properties["contact.location"].value}`} className=" hover:underline">
             <span className="mb-3 flex size-12 bg-(--color-primary) flex-col items-center justify-center rounded-xl text-white">
               <MapPin className="h-6 w-auto" />
             </span>
@@ -60,10 +60,10 @@ const Contact7 = () => {
             <p className="mb-4 text-muted-foreground text-sm">
               Drop by our office for a chat.
             </p>
-            <a target="_blank" href={`${properties["contact.location"].value}`} className="font-bold hover:underline">
+            <div className="font-bold">
               {properties["contact.address"].value}
-            </a>
-          </div>
+            </div>
+          </a>
         </div>
       </div>
     </section>
