@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "npm run saveNotion && next build",
     "saveNotion": "npx ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/saveNotionData.ts",
-    "start": "next start"
+    "start": "next start",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "@notionhq/client": "^3.0.1",
