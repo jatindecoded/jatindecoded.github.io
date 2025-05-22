@@ -11,8 +11,8 @@ module.exports = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  basePath: isProd ? '/kenrax' : '',
-  assetPrefix: isProd ? '/kenrax/' : '',
+  basePath: '/kenrax',
+  assetPrefix: '/kenrax/',
   trailingSlash: true,
   images: { unoptimized: true },
 };
