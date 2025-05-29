@@ -82,8 +82,6 @@ const Hero151 = ({
     <section className="py-4">
       <div className="flex flex-col items-center">
         <SearchCustom
-        // results={results}
-        // setResults={setResults}
         />
 
         <div className="flex flex-col items-center gap-8 md:flex-row-reverse">

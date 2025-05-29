@@ -10,7 +10,8 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import { buyNowHref, checkPriceHref } from "./constants";
-import { FallbackProductImage } from "./productCard";
+import properties from "@/data/properties.json"
+import { SearchCustom } from "./searchCustom";
 
 interface Hero3Props {
   product: Product
@@ -77,8 +78,10 @@ const Hero3 = ({
   },
 }: Hero3Props) => {
   return (
-    <section>
-      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20 pt-12">
+    <section className="py-4">
+      <SearchCustom
+      />
+      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20 pt-8">
         <div className="mx-auto order-1 lg:order-0 flex flex-col items-center text-center md:ml-auto lg:max-w-3xl lg:items-start lg:text-left">
           <h1 className="mt-6 text-lg uppercase font-semibold text-muted-foreground">
             {product?.type}
@@ -131,8 +134,8 @@ const Hero3 = ({
           </p>
         </div>
         <div className="flex justify-center items-start lg:mt-8 h-full order-0 lg:order-1 px-12">
-          <Carousel>
-            <CarouselContent>
+          <Carousel className="w-full">
+            <CarouselContent className="w-full">
               {product.images.length > 0 ? product?.images?.map(((image, idx) => {
                 return (
                   <CarouselItem
@@ -159,26 +162,35 @@ const Hero3 = ({
 
                 )
               })) :
-                <CarouselItem
-                  className="place-items-center flex justify-center ">
-                  <div className="max-h-[40vh] w-[300px] md:max-h-[50vh] rounded-md">
+                (
+                  <CarouselItem
+                    // key={idx}
+                    className="place-items-center flex justify-center relative">
+                    <img
+                      src={properties["media.homepage.photo.1"].media[0]}
+                      alt={product.partNumber}
+                      className="max-h-[40vh] zoom-image md:max-h-[50vh] rounded-md opacity-50 "
+                    />
+                    <div className="flex items-center flex-col absolute font-bold opacity-80">
+                      <span className="uppercase">
+                        {product.type}
+                      </span>
+                      <span>
+                        {product.partNumber}
+                      </span>
+                    </div>
 
-                    <FallbackProductImage product={product} />
-                  </div>
-                  {/* <img
-                        // src={image}
-                        alt={product.partNumber}
-                        className="max-h-[40vh] zoom-image md:max-h-[50vh] rounded-md"
-                      /> */}
-                </CarouselItem>
+
+                  </CarouselItem>
+                )
               }
             </CarouselContent>
             <CarouselPrevious />
             <CarouselNext />
           </Carousel>
         </div>
-      </div>
-    </section>
+      </div >
+    </section >
   );
 };
 

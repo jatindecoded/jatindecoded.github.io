@@ -7,7 +7,9 @@
       "Mann Filters"
     ],
     "compatibleWith": [],
-    "images": [],
+    "images": [
+      "/media/e65f963b-da99-41fc-b618-3cd1b1d6f9fe-c630.png"
+    ],
     "description": "The C630 air filter is a top-of-the-line filtration system designed to keep your compressor running smoothly and the air clean. With its efficient filtering element and durable construction, this air filter is built to last and provide maximum protection for your compressor and is used in various compressor models.",
     "priority": null,
     "url": "/product/c630---air-filter"
@@ -115,19 +117,6 @@
     "description": "Enhance the performance and longevity of your Mann-Filter / Mann &amp; Hummel compressors with our high-quality Air Filter Cartridge (Part Number: C630). Designed to meet or exceed OEM specifications, these Air Filter Cartridge ensure optimal efficiency and reliability. Specifically engineered for Mann-Filter / Mann &amp; Hummel compressors, they provide superior filtration, protecting your equipment from contaminants and wear. Each Air Filter Cartridge undergoes comprehensive quality control to deliver consistent and dependable performance. Benefit from competitive pricing, bulk order discounts, and prompt delivery for all your compressor spares.",
     "priority": null,
     "url": "/product/c630"
-  },
-  {
-    "id": "2029473a-31b3-818d-9a42-f9a503c5ec26",
-    "partNumber": "X017503",
-    "type": "Oil Filter",
-    "OEMs": [
-      "Elgi"
-    ],
-    "compatibleWith": [],
-    "images": [],
-    "description": "Enhance the performance and longevity of your Elgi compressors with our high-quality Oil Filter (Part Number: X017503). Designed to meet or exceed OEM specifications, these Oil Filter ensure optimal efficiency and reliability. Specifically engineered for Elgi compressors, they provide superior filtration, protecting your equipment from contaminants and wear. Each Oil Filter undergoes comprehensive quality control to deliver consistent and dependable performance. Benefit from competitive pricing, bulk order discounts, and prompt delivery for all your compressor spares.",
-    "priority": null,
-    "url": "/product/x017503"
   },
   {
     "id": "2029473a-31b3-81cc-bf0f-dba8595595ef",
