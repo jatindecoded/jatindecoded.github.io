@@ -94,7 +94,7 @@ export const SearchCustom = ({ results, setResults, activeFilters, setActiveFilt
 	}, [searchQuery])
 
 	return (
-		<div className="w-full relative mb-6 max-w-[600px] h-[36px] relative flex gap-1">
+		<div className="w-full relative mb-6 max-w-[600px] h-[36px] relative flex justify-center gap-1">
 			{/* <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-3 w-3" />
 			<Input
 				value={searchQuery}
@@ -109,7 +109,7 @@ export const SearchCustom = ({ results, setResults, activeFilters, setActiveFilt
 						variant="input"
 						role="combobox"
 						aria-expanded={open}
-						className="w-[500px] justify-start no-uppercase"
+						className="w-[70vw] max-w-[600px] justify-start no-uppercase"
 					>
 						<SearchIcon className="size-4 shrink-0 opacity-50" />
 
@@ -118,7 +118,7 @@ export const SearchCustom = ({ results, setResults, activeFilters, setActiveFilt
 				</PopoverTrigger>
 				<PopoverContent
 					sideOffset={-36}
-					className="w-[500px] p-0 animate-[wiggle_10s_ease-in-out_infinite]!">
+					className="w-[70vw] max-w-[600px] p-0 animate-[wiggle_10s_ease-in-out_infinite]!">
 					<Command>
 						<CommandInput
 							value={searchQuery}

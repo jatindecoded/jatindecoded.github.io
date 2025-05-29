@@ -3,6 +3,7 @@ import { Navbar1 } from "@/components/navbar1";
 import "./globals.css";
 import { Footer2 } from "@/components/footer2";
 import { ProgressProvider } from '@bprogress/next/app';
+import { Suspense } from "react";
 
 export default function RootLayout({
   children,
@@ -25,7 +26,9 @@ export default function RootLayout({
           </header>
           <div className="lg:px-10 px-4">
             <div className="lg: px-2">
-              {children}
+              <Suspense>
+                {children}
+              </Suspense>
             </div>
             <Footer2 />
           </div>
