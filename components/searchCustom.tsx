@@ -51,7 +51,7 @@ export const SearchCustom = ({ }: {
 
 
 	const onSubmitQuery = () => {
-		router.push(productsPageHref + (query !== "" && ("?name=" + query)))
+		router.push(productsPageHref + (query !== "" ? ("?name=" + query) : ""))
 	}
 
 
