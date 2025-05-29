@@ -18,17 +18,17 @@ import { SearchCustom } from "./searchCustom";
 
 interface ProductPageInterface {
   products: Product[] | undefined;
-  fallback: string;
 }
 
-const Team2 = ({ products, fallback = 'https://picsum.photos/id/237/400/900' }: ProductPageInterface) => {
+const Team2 = ({ products }: ProductPageInterface) => {
   if (!products) {
     return null
   }
   // const searchParams = useSearchParams();
   // const name = searchParams.get('name');
 
-  const [searchQuery, setSearchQuery] = useState('');
+  // const [searchQuery, setSearchQuery] = useState('');
+  const [results, setResults] = useState(products);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
   // useEffect(() => {
@@ -45,12 +45,12 @@ const Team2 = ({ products, fallback = 'https://picsum.photos/id/237/400/900' }: 
     );
   };
 
-  const fuse = useMemo(() => {
-    return new Fuse(products, {
-      keys: ['partNumber', 'type', 'OEM', 'compatibleWith'],
-      threshold: 0.4, // adjust for fuzziness (0 = exact, 1 = very fuzzy)
-    });
-  }, [products]);
+  // const fuse = useMemo(() => {
+  //   return new Fuse(products, {
+  //     keys: ['partNumber', 'type', 'OEM', 'compatibleWith'],
+  //     threshold: 0.4, // adjust for fuzziness (0 = exact, 1 = very fuzzy)
+  //   });
+  // }, [products]);
 
   // const results = searchQuery
   //   ? fuse
@@ -63,9 +63,18 @@ const Team2 = ({ products, fallback = 'https://picsum.photos/id/237/400/900' }: 
   //     activeFilters.length === 0 ? true : activeFilters.includes(product.type.toLowerCase())
   //   );
 
+  // const results = products.filter(product =>
+  //   activeFilters.length === 0 ? true : activeFilters.includes(product.type.toLowerCase())
+  // );
+
+  useEffect(() => {
+    setResults(products.filter(product =>
+      activeFilters.length === 0 ? true : activeFilters.includes(product.type.toLowerCase())))
+  }, [activeFilters])
+
   const allTypes = new Set(products.map(p => p.type));
 
-  const [results, setResults] = useState(products);
+  // const [results, setResults] = useState(products);
 
   const descMaxLength = 80;
   return (
@@ -108,16 +117,16 @@ const Team2 = ({ products, fallback = 'https://picsum.photos/id/237/400/900' }: 
 
         </div> */}
         <SearchCustom
-          results={results}
-          setResults={setResults}
+        // results={results}
+        // setResults={setResults}
         />
       </div>
       <div className="items-center mt-16 grid gap-x-12 gap-y-16 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {results?.map((product: Product) => {
+        {results?.map((product: Product, idx) => {
           return (
             <ProductCard
-              key={product.url}
-              product={product} fallback={properties["media.homepage.photo.1"].media[0]} descMaxLength={descMaxLength} />
+              key={idx}
+              product={product} descMaxLength={descMaxLength} />
           )
         }
         )}

@@ -76,7 +76,16 @@ const Careers4 = ({
               {heading}
             </h1>
           </div>
-          <div className="text-center py-2 flex flex justify-around flex-wrap gap-6 gap-y-2">
+          <div className="text-center py-2 grid md:grid-cols-2 gap-10 px-10 flex-wrap gap-6 gap-y-2">
+            <div className="py-4">
+              <h2 className="font-bold tracking-tight text-xl text-muted-foreground">
+                Type of Product
+              </h2>
+              <Separator className="mb-2" />
+              <div className="flex-col font-bold capitalize">
+                {product.type}
+              </div>
+            </div>
             <div className="py-4">
               <h2 className="font-bold tracking-tight text-xl text-muted-foreground">
                 OEM
@@ -97,26 +106,29 @@ const Careers4 = ({
                 }
               </div>
             </div>
-            <div className="py-4">
-              <h2 className="font-bold tracking-tight text-xl text-muted-foreground">
-                Compatible with
-              </h2>
-              <Separator className="mb-2" />
-              <div className="flex-col">
-                {
-                  product.compatibleWith.map((c, idx) => {
-                    return (
-                      <p
-                        key={idx}
-                        className="font-bold">
-                        {c}
-                      </p>
-                    )
-                  })
+            {product.compatibleWith.length > 0 && (
 
-                }
+              <div className="py-4">
+                <h2 className="font-bold tracking-tight text-xl text-muted-foreground">
+                  Compatible with
+                </h2>
+                <Separator className="mb-2" />
+                <div className="flex-col overflow-auto max-h-[200px]">
+                  {
+                    product.compatibleWith.map((c, idx) => {
+                      return (
+                        <p
+                          key={idx}
+                          className="font-bold">
+                          {c}
+                        </p>
+                      )
+                    })
+
+                  }
+                </div>
               </div>
-            </div>
+            )}
           </div>
           {/* <div className="mx-auto flex flex-col gap-16 mt-6">
             {jobs.map((jobCategory) => (

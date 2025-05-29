@@ -10,7 +10,12 @@ const databaseId = process.env.NOTION_DATABASE_ID!;
 export async function fetchProductData(): Promise<Product[] | undefined> {
 	try {
 		const response = await notion.databases.query({ database_id: databaseId });
-		return response.results.map((page: any) => {
+		return response.results.filter((page: any) => {
+			const props = page.properties;
+			// 		only filter those in which visible is true
+			return props["Visible"]?.checkbox
+
+		}).map((page: any) => {
 			const props = page.properties;
 
 			return {
@@ -41,7 +46,7 @@ export interface Product {
 	// 'Air Filter' | 'Oil Filter' | 'Air-Oil Separator' | 'Hydraulic Filter' | 'Line Filter';
 	OEMs: string[];
 	compatibleWith: string[]; // E.g., ["Atlas Copco", "Ingersoll Rand"]
-	images?: string[];
+	images: string[];
 	description?: string;
 	priority?: number | null;
 	url: string

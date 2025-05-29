@@ -197,11 +197,11 @@ const Navbar1 = ({
                     <span className={`text-md uppercase font-bold ${spaceGrotesk.className} tracking-tight `}>
                       {logo.title}
                     </span>
-                    {/* <Link
+                    <div
                       // href={`tel:+91-${properties["contact.phone.visible"].value}`} 
-                      className={`text-xs font-semibold text-muted-foreground text-center leading-[0.5] `}> */}
-                    +91-{properties["contact.phone.visible"].value}
-                    {/* </Link> */}
+                      className={`text-xs font-semibold text-muted-foreground text-center leading-[0.5] `}>
+                      +91-{properties["contact.phone.visible"].value}
+                    </div>
                   </div>
 
                 </AccordionTrigger>

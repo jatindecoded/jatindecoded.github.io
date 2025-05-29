@@ -10,9 +10,10 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import { buyNowHref, checkPriceHref } from "./constants";
+import { FallbackProductImage } from "./productCard";
 
 interface Hero3Props {
-  product: Product | undefined
+  product: Product
   heading?: string;
   description?: string;
   buttons?: {
@@ -132,7 +133,7 @@ const Hero3 = ({
         <div className="flex justify-center items-start lg:mt-8 h-full order-0 lg:order-1 px-12">
           <Carousel>
             <CarouselContent>
-              {product?.images?.map(((image, idx) => {
+              {product.images.length > 0 ? product?.images?.map(((image, idx) => {
                 return (
                   <CarouselItem
                     key={idx}
@@ -141,14 +142,14 @@ const Hero3 = ({
                       <DialogTrigger className="place-items-center">
                         <img
                           src={image}
-                          alt="placeholder hero"
+                          alt={product.partNumber}
                           className="max-h-[40vh] zoom-image md:max-h-[50vh] rounded-md"
                         />
                       </DialogTrigger>
                       <DialogContent className="place-items-center">
                         <img
                           src={image}
-                          alt="placeholder hero"
+                          alt={product.partNumber}
                           className="max-h-[100vh] rounded-md"
                         />
                       </DialogContent>
@@ -157,7 +158,20 @@ const Hero3 = ({
                   </CarouselItem>
 
                 )
-              }))}
+              })) :
+                <CarouselItem
+                  className="place-items-center flex justify-center ">
+                  <div className="max-h-[40vh] w-[300px] md:max-h-[50vh] rounded-md">
+
+                    <FallbackProductImage product={product} />
+                  </div>
+                  {/* <img
+                        // src={image}
+                        alt={product.partNumber}
+                        className="max-h-[40vh] zoom-image md:max-h-[50vh] rounded-md"
+                      /> */}
+                </CarouselItem>
+              }
             </CarouselContent>
             <CarouselPrevious />
             <CarouselNext />

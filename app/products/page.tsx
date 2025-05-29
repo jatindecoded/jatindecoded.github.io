@@ -5,8 +5,6 @@ export default async function Home() {
   return (
     <>
       <Team2
-        // TODO
-        fallback=""
         products={products}
       />
     </>

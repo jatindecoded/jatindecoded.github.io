@@ -11,6 +11,7 @@ import { useRouter } from '@bprogress/next/app';
 import { productsPageHref } from "./constants";
 import { SearchCustom } from "./searchCustom";
 import { Product } from "@/scripts/fetchNotionProducts";
+import products from "@/data/products.json"
 
 interface Testimonial {
   quote: string;
@@ -75,14 +76,14 @@ const Hero151 = ({
   },
 }: Hero151Props) => {
 
-  const [results, setResults] = useState<Product[]>([]);
+  const [results, setResults] = useState<Product[]>(products);
 
   return (
     <section className="py-4">
       <div className="flex flex-col items-center">
         <SearchCustom
-          results={results}
-          setResults={setResults}
+        // results={results}
+        // setResults={setResults}
         />
 
         <div className="flex flex-col items-center gap-8 md:flex-row-reverse">

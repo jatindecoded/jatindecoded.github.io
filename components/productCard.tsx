@@ -3,10 +3,7 @@ import { Separator } from "./ui/separator"
 import { Button } from "./ui/button";
 import properties from "../data/properties.json"
 
-export default function ProductCard({ product, fallback, descMaxLength = 80 }: { product: Product, fallback?: string, descMaxLength?: number }) {
-	if (!fallback) {
-		fallback = properties["media.homepage.photo.1"].media[0]
-	}
+export default function ProductCard({ product, descMaxLength = 80 }: { product: Product, descMaxLength?: number }) {
 
 	const truncatedDescription = () => {
 		if (!product.description || descMaxLength <= 0 || product.description.length == 0) {
@@ -29,19 +26,7 @@ export default function ProductCard({ product, fallback, descMaxLength = 80 }: {
 						className="w-full aspect-4/5 object-cover rounded-sm mb-4 md:mb-5"
 					/>
 				) : (
-					<div className={`w-full aspect-4/5 flex flex-col items-center justify-center rounded-sm text-sm font-bold text-gray-600 mb-4 md:mb-5 uppercase bg-blend-lighten relative`}
-						style={{ backgroundImage: `url(${fallback})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-					>
-						<div className="absolute inset-0 bg-white/70" />
-						<div className="relative items-center flex flex-col">
-							<p>
-								{product.type}
-							</p>
-							<p>
-								{product.partNumber}
-							</p>
-						</div>
-					</div>
+					<FallbackProductImage product={product} />
 				)
 			}
 			<p className="text-muted-foreground text-xs uppercase font-semibold">{product.type}</p>
@@ -50,14 +35,14 @@ export default function ProductCard({ product, fallback, descMaxLength = 80 }: {
 			<div className=" w-full grid grid-cols-1 md:grid-cols-2">
 				<div className="order-1 md:order-none text-muted-foreground text-xs flex-1 self-end">OEMs</div>
 				<div className="order-3 md:order-none text-muted-foreground text-xs flex-1 md:text-right self-end pt-2 md:pt-none">Compatible with</div>
-				<div className="order-2 md:order-none flex-1 text-xs font-semibold">
+				<div className="order-2 md:order-none flex-1 text-xs font-semibold line-clamp-2">
 					{product.OEMs.map((OEM, idx) => {
 						return (
-							<span key={idx}>{OEM}</span>
+							<span key={idx}>{OEM}{idx == product.OEMs.length - 1 ? "" : ", "}</span>
 						)
 					})}
 				</div>
-				<div className="order-4 md:order-none flex-1 md:text-right text-xs font-semibold pb-1 md:pb-none">
+				<div className="order-4 md:order-none flex-1 md:text-right text-xs font-semibold pb-1 md:pb-none line-clamp-2">
 					{product.compatibleWith.map((c, idx) => {
 						return (
 							<p key={idx}>{c}{idx == product.compatibleWith.length - 1 ? "" : ", "}</p>
@@ -76,5 +61,26 @@ export default function ProductCard({ product, fallback, descMaxLength = 80 }: {
 				<Button key={product.id + "2"} variant={"outline"}>Get Price</Button>
 			</div>
 		</a>
+	)
+}
+
+export const FallbackProductImage = ({ product, fallback }: { product: Product, fallback?: string }) => {
+	if (!fallback) {
+		fallback = properties["media.homepage.photo.1"].media[0]
+	}
+	return (
+		<div className={`w-full aspect-4/5 flex flex-col items-center justify-center rounded-sm text-sm font-bold text-gray-600 mb-4 md:mb-5 uppercase bg-blend-lighten relative`}
+			style={{ backgroundImage: `url(${fallback})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+		>
+			<div className="absolute inset-0 bg-white/70" />
+			<div className="relative items-center flex flex-col">
+				<p>
+					{product.type}
+				</p>
+				<p>
+					{product.partNumber}
+				</p>
+			</div>
+		</div>
 	)
 }

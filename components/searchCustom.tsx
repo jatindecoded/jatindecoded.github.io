@@ -1,4 +1,4 @@
-import { Beaker, Check, Leaf, Search, SearchIcon } from "lucide-react";
+import { Beaker, BeakerIcon, Check, Leaf, LeafIcon, Search, SearchIcon } from "lucide-react";
 import { Input } from "./ui/input";
 import { useRouter } from '@bprogress/next/app';
 import { useSearchParams } from "next/navigation";
@@ -34,11 +34,11 @@ import { cn } from "@/lib/utils";
 import { search } from "@notionhq/client/build/src/api-endpoints";
 import Link from "next/link";
 
-export const SearchCustom = ({ results, setResults, activeFilters, setActiveFilters }: {
-	results: Product[];
-	setResults: Dispatch<React.SetStateAction<Product[]>>;
-	activeFilters?: string[];
-	setActiveFilters?: Dispatch<React.SetStateAction<String[]>>;
+export const SearchCustom = ({ }: {
+	// results: Product[];
+	// setResults: Dispatch<React.SetStateAction<Product[]>>;
+	// activeFilters?: string[];
+	// setActiveFilters?: Dispatch<React.SetStateAction<String[]>>;
 
 }) => {
 	const searchParams = useSearchParams();
@@ -49,49 +49,49 @@ export const SearchCustom = ({ results, setResults, activeFilters, setActiveFilt
 	const [open, setOpen] = useState(false)
 
 
-	const onSubmitQuery = () => {
-		// e.preventDefault();
-		router.push(productsPageHref + "?name=" + searchQuery)
-	}
+	// const onSubmitQuery = () => {
+	// 	// e.preventDefault();
+	// 	router.push(productsPageHref + "?name=" + searchQuery)
+	// }
 	useEffect(() => {
 		if (name) {
 			setSearchQuery(name)
 		}
 	}, [])
 
-	const handleToggle = (filter: string) => {
-		if (!activeFilters || !setActiveFilters) {
-			return;
-		}
-		setActiveFilters(prev =>
-			prev.includes(filter)
-				? prev.filter(f => f !== filter)
-				: [...prev, filter]
-		);
-	};
+	// const handleToggle = (filter: string) => {
+	// 	if (!activeFilters || !setActiveFilters) {
+	// 		return;
+	// 	}
+	// 	setActiveFilters(prev =>
+	// 		prev.includes(filter)
+	// 			? prev.filter(f => f !== filter)
+	// 			: [...prev, filter]
+	// 	);
+	// };
 
-	const fuse = useMemo(() => {
-		return new Fuse(products, {
-			keys: ['partNumber', 'type', 'OEM', 'compatibleWith'],
-			threshold: 0.2, // adjust for fuzziness (0 = exact, 1 = very fuzzy)
-		});
-	}, [products]);
+	// const fuse = useMemo(() => {
+	// 	return new Fuse(products, {
+	// 		keys: ['partNumber', 'type', 'OEM', 'compatibleWith'],
+	// 		threshold: 0.2, // adjust for fuzziness (0 = exact, 1 = very fuzzy)
+	// 	});
+	// }, [products]);
 
 
-	useEffect(() => {
-		setResults(
-			searchQuery
-				? fuse
-					.search(searchQuery)
-					.map(result => result.item)
-					.filter(product =>
-						(!activeFilters || activeFilters.length === 0) ? true : activeFilters.includes(product.type.toLowerCase())
-					)
-				: products.filter(product =>
-					(!activeFilters || activeFilters.length === 0) ? true : activeFilters.includes(product.type.toLowerCase())
-				)
-		)
-	}, [searchQuery])
+	// useEffect(() => {
+	// 	setResults(
+	// 		searchQuery
+	// 			? fuse
+	// 				.search(searchQuery)
+	// 				.map(result => result.item)
+	// 				.filter(product =>
+	// 					(!activeFilters || activeFilters.length === 0) ? true : activeFilters.includes(product.type.toLowerCase())
+	// 				)
+	// 			: products.filter(product =>
+	// 				(!activeFilters || activeFilters.length === 0) ? true : activeFilters.includes(product.type.toLowerCase())
+	// 			)
+	// 	)
+	// }, [searchQuery])
 
 	return (
 		<div className="relative mb-6 h-[36px] relative flex justify-center gap-1">
@@ -109,39 +109,51 @@ export const SearchCustom = ({ results, setResults, activeFilters, setActiveFilt
 						variant="input"
 						role="combobox"
 						aria-expanded={open}
-						className="w-[70vw] max-w-[600px] justify-start no-uppercase"
+						className="w-[70vw] max-w-[600px] justify-start"
 					>
 						<SearchIcon className="size-4 shrink-0 opacity-50" />
 
-						{searchQuery || "Search products..."}
+						{"Search products..."}
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent
 					sideOffset={-36}
-					className="w-[70vw] max-w-[600px] p-0 animate-[wiggle_10s_ease-in-out_infinite]!">
-					<Command>
+					className="w-[70vw] max-w-[600px] p-0 animate-[wiggle_10s_ease-in-out_infinite]!"
+				>
+					<Command
+						filter={(value, search, keywords) => {
+							const searchValue =
+								keywords && keywords.length > 0 ? keywords.join(" ") : value;
+
+							return searchValue.toLowerCase().includes(search.toLowerCase()) ? 1 : 0;
+						}}
+					>
 						<CommandInput
-							value={searchQuery}
-							onValueChange={setSearchQuery}
 							placeholder="Search products..." className="h-9" />
 						<CommandList>
 							<CommandEmpty>No products found.</CommandEmpty>
 							<CommandGroup>
-								{results.map((product) => (
+								{products.map((product, idx) => (
 									<CommandItem
-										key={product.url}
-										value={product.partNumber + " - " + product.type}
+										key={idx}
+										value={idx.toString()}
+										keywords={[product.partNumber, product.type]}
+										// value={product.partNumber + " - " + product.type}
 										onSelect={(currentValue) => {
 											setSearchQuery(currentValue === searchQuery ? "" : currentValue)
 											setOpen(false)
+
 											router.push(product.url)
 										}}
 										className="font-semibold"
 									>
 										<Link href={product.url} className="flex gap-4 w-full justify-between">
-											<span>
-												{product.partNumber}
-											</span>
+											<div className="flex gap-2 items-center">
+												<BeakerIcon />
+												<span>
+													{product.partNumber}
+												</span>
+											</div>
 											<span className="text-xs uppercase text-muted-foreground font-normal">
 												{product.type}
 											</span>
