@@ -14,6 +14,8 @@ import ProductCard from "./productCard";
 import properties from "../data/properties.json"
 import { useSearchParams } from "next/navigation";
 import { SearchCustom } from "./searchCustom";
+import Link from "next/link";
+import { productsPageHref } from "./constants";
 
 
 interface ProductPageInterface {
@@ -24,10 +26,10 @@ const Team2 = ({ products }: ProductPageInterface) => {
   if (!products) {
     return null
   }
-  // const searchParams = useSearchParams();
-  // const name = searchParams.get('name');
+  const searchParams = useSearchParams();
+  const name = searchParams.get('name');
 
-  // const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [results, setResults] = useState(products);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
@@ -68,8 +70,14 @@ const Team2 = ({ products }: ProductPageInterface) => {
   // );
 
   useEffect(() => {
-    setResults(products.filter(product =>
-      activeFilters.length === 0 ? true : activeFilters.includes(product.type.toLowerCase())))
+    setResults(products.filter(product => {
+      const typeMatch = activeFilters.length === 0 ? true : activeFilters.includes(product.type.toLowerCase())
+      const queryMatch = name ? product.partNumber.toLowerCase().includes(name.toLowerCase()) : true
+
+      return typeMatch && queryMatch;
+    }
+    ))
+
   }, [activeFilters])
 
   const allTypes = new Set(products.map(p => p.type));
@@ -78,7 +86,9 @@ const Team2 = ({ products }: ProductPageInterface) => {
 
   const descMaxLength = 80;
   return (
-    <section className="py-16 items-center">
+    <section className="py-4 items-center">
+      <SearchCustom
+      />
       <div className="items-center flex flex-col items-start text-left">
         <h2 className="text-4xl font-bold tracking-tight text-pretty lg:text-4xl">
           Our Products
@@ -107,6 +117,19 @@ const Team2 = ({ products }: ProductPageInterface) => {
 
 
         </div>
+        {name && (
+          <div className="w-full flex justify-center flex-col">
+            <h2 className="text-center font-semibold text-xl tracking-tight text-muted-foreground">
+              Search results for "{name}"
+            </h2>
+            <a
+              className="text-center underline text-primary font-semibold"
+              href={productsPageHref}
+            >
+              See all products
+            </a>
+          </div>
+        )}
         {/* <div className="w-full relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-3 w-3" />
           <Input
@@ -116,10 +139,7 @@ const Team2 = ({ products }: ProductPageInterface) => {
             className="pl-8 text-xs!" />
 
         </div> */}
-        <SearchCustom
-        // results={results}
-        // setResults={setResults}
-        />
+
       </div>
       <div className="items-center mt-16 grid gap-x-12 gap-y-16 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {results?.map((product: Product, idx) => {

@@ -43,21 +43,17 @@ export const SearchCustom = ({ }: {
 }) => {
 	const searchParams = useSearchParams();
 	const name = searchParams.get('name');
-	const [searchQuery, setSearchQuery] = useState('');
+	// const [searchQuery, setSearchQuery] = useState('');
 	const router = useRouter();
 
 	const [open, setOpen] = useState(false)
+	const [query, setQuery] = useState("");
 
 
-	// const onSubmitQuery = () => {
-	// 	// e.preventDefault();
-	// 	router.push(productsPageHref + "?name=" + searchQuery)
-	// }
-	useEffect(() => {
-		if (name) {
-			setSearchQuery(name)
-		}
-	}, [])
+	const onSubmitQuery = () => {
+		router.push(productsPageHref + (query !== "" && ("?name=" + query)))
+	}
+
 
 	// const handleToggle = (filter: string) => {
 	// 	if (!activeFilters || !setActiveFilters) {
@@ -109,16 +105,16 @@ export const SearchCustom = ({ }: {
 						variant="input"
 						role="combobox"
 						aria-expanded={open}
-						className="w-[70vw] max-w-[600px] justify-start"
+						className="w-[80vw] max-w-[600px] justify-start"
 					>
 						<SearchIcon className="size-4 shrink-0 opacity-50" />
 
-						{"Search products..."}
+						{query || "Search products..."}
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent
 					sideOffset={-36}
-					className="w-[70vw] max-w-[600px] p-0 animate-[wiggle_10s_ease-in-out_infinite]!"
+					className="w-[80vw] max-w-[600px] p-0 animate-[wiggle_10s_ease-in-out_infinite]!"
 				>
 					<Command
 						filter={(value, search, keywords) => {
@@ -129,6 +125,8 @@ export const SearchCustom = ({ }: {
 						}}
 					>
 						<CommandInput
+							value={query}
+							onValueChange={setQuery}
 							placeholder="Search products..." className="h-9" />
 						<CommandList>
 							<CommandEmpty>No products found.</CommandEmpty>
@@ -140,9 +138,7 @@ export const SearchCustom = ({ }: {
 										keywords={[product.partNumber, product.type]}
 										// value={product.partNumber + " - " + product.type}
 										onSelect={(currentValue) => {
-											setSearchQuery(currentValue === searchQuery ? "" : currentValue)
 											setOpen(false)
-
 											router.push(product.url)
 										}}
 										className="font-semibold"
@@ -173,8 +169,14 @@ export const SearchCustom = ({ }: {
 			</Popover>
 			<Button
 				className="h-full"
+				onClick={onSubmitQuery}
 			>
-				Search
+				<span className="block md:hidden">
+					<Search />
+				</span>
+				<span className="hidden md:block">
+					Search
+				</span>
 			</Button>
 			{/* <Command
 				className="rounded-lg border shadow-md md:min-w-[450px]">
