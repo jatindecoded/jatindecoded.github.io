@@ -44,7 +44,7 @@ export interface Product {
 	images?: string[];
 	description?: string;
 	priority?: number | null;
-	url?: string
+	url: string
 }
 
 

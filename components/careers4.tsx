@@ -84,9 +84,11 @@ const Careers4 = ({
               <Separator className="mb-2" />
               <div className="flex-col">
                 {
-                  product.OEMs.map((OEM) => {
+                  product.OEMs.map((OEM, idx) => {
                     return (
-                      <p className="font-bold">
+                      <p
+                        key={idx}
+                        className="font-bold">
                         {OEM}
                       </p>
                     )

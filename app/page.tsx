@@ -1,3 +1,4 @@
+"use client"
 import { Contact7 } from "@/components/contact7";
 import { Faq5 } from "@/components/faq5";
 import { Gallery6 } from "@/components/gallery6";

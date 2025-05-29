@@ -1,6 +1,8 @@
+"use client"
 import { Navbar1 } from "@/components/navbar1";
 import "./globals.css";
 import { Footer2 } from "@/components/footer2";
+import { ProgressProvider } from '@bprogress/next/app';
 
 export default function RootLayout({
   children,
@@ -12,15 +14,22 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        <header className="sticky top-0 z-50 lg:px-10 px-4">
-          <Navbar1 />
-        </header>
-        <div className="lg:px-10 px-4">
-          <div className="lg: px-2">
-            {children}
+        <ProgressProvider
+          height="4px"
+          color="oklch(0.59 0.1988 141.8)"
+        // options={{ showSpinner: false }}
+        // shallowRouting
+        >
+          <header className="sticky top-0 z-50">
+            <Navbar1 />
+          </header>
+          <div className="lg:px-10 px-4">
+            <div className="lg: px-2">
+              {children}
+            </div>
+            <Footer2 />
           </div>
-          <Footer2 />
-        </div>
+        </ProgressProvider>
       </body>
     </html>
   );

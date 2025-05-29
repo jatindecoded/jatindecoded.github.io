@@ -6,12 +6,14 @@ import { Input } from "./ui/input";
 import { Toggle } from "./ui/toggle";
 import { Product, toKebabCase } from "@/scripts/fetchNotionProducts";
 import Fuse from 'fuse.js';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Badge } from "./ui/badge";
 import { Table, TableBody, TableCell, TableRow } from "./ui/table";
 import { Separator } from "./ui/separator";
 import ProductCard from "./productCard";
 import properties from "../data/properties.json"
+import { useSearchParams } from "next/navigation";
+import { SearchCustom } from "./searchCustom";
 
 
 interface ProductPageInterface {
@@ -23,8 +25,17 @@ const Team2 = ({ products, fallback = 'https://picsum.photos/id/237/400/900' }: 
   if (!products) {
     return null
   }
+  // const searchParams = useSearchParams();
+  // const name = searchParams.get('name');
+
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
+
+  // useEffect(() => {
+  //   if (name) {
+  //     setSearchQuery(name)
+  //   }
+  // }, [])
 
   const handleToggle = (filter: string) => {
     setActiveFilters(prev =>
@@ -41,18 +52,20 @@ const Team2 = ({ products, fallback = 'https://picsum.photos/id/237/400/900' }: 
     });
   }, [products]);
 
-  const results = searchQuery
-    ? fuse
-      .search(searchQuery)
-      .map(result => result.item)
-      .filter(product =>
-        activeFilters.length === 0 ? true : activeFilters.includes(product.type.toLowerCase())
-      )
-    : products.filter(product =>
-      activeFilters.length === 0 ? true : activeFilters.includes(product.type.toLowerCase())
-    );
+  // const results = searchQuery
+  //   ? fuse
+  //     .search(searchQuery)
+  //     .map(result => result.item)
+  //     .filter(product =>
+  //       activeFilters.length === 0 ? true : activeFilters.includes(product.type.toLowerCase())
+  //     )
+  //   : products.filter(product =>
+  //     activeFilters.length === 0 ? true : activeFilters.includes(product.type.toLowerCase())
+  //   );
 
   const allTypes = new Set(products.map(p => p.type));
+
+  const [results, setResults] = useState(products);
 
   const descMaxLength = 80;
   return (
@@ -65,9 +78,10 @@ const Team2 = ({ products, fallback = 'https://picsum.photos/id/237/400/900' }: 
         <p className="semibold text-muted-foreground text-xs mb-1">Filter by Product Type:</p>
         <div className="flex gap-2 flex-wrap items-center mb-4">
           {
-            Array.from(allTypes)?.map((p) => {
+            Array.from(allTypes)?.map((p, idx) => {
               return (
                 <Toggle
+                  key={idx}
                   variant={'outline'}
                   className="font-bold uppercase text-xs data-[state=on]:bg-primary data-[state=on]:text-background cursor-pointer"
                   aria-label="Toggle italic"
@@ -84,20 +98,26 @@ const Team2 = ({ products, fallback = 'https://picsum.photos/id/237/400/900' }: 
 
 
         </div>
-        <div className="w-full relative">
+        {/* <div className="w-full relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-3 w-3" />
           <Input
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search for a product. (Eg. B006700770010)"
-            className="pl-8 placeholder:italic text-xs!" />
+            className="pl-8 text-xs!" />
 
-        </div>
+        </div> */}
+        <SearchCustom
+          results={results}
+          setResults={setResults}
+        />
       </div>
       <div className="items-center mt-16 grid gap-x-12 gap-y-16 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {results?.map((product: Product) => {
           return (
-            <ProductCard product={product} fallback={properties["media.homepage.photo.1"].media[0]} descMaxLength={descMaxLength} />
+            <ProductCard
+              key={product.url}
+              product={product} fallback={properties["media.homepage.photo.1"].media[0]} descMaxLength={descMaxLength} />
           )
         }
         )}

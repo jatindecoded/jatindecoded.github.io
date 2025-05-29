@@ -1,9 +1,16 @@
+"use client"
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { Download, PhoneOutgoing } from "lucide-react";
+import { Download, PhoneOutgoing, Search } from "lucide-react";
 import properties from "../data/properties.json"
+import { Input } from "./ui/input";
+import { useState } from "react";
+import { useRouter } from '@bprogress/next/app';
+import { productsPageHref } from "./constants";
+import { SearchCustom } from "./searchCustom";
+import { Product } from "@/scripts/fetchNotionProducts";
 
 interface Testimonial {
   quote: string;
@@ -67,9 +74,17 @@ const Hero151 = ({
     fourth: properties["media.homepage.photo.4"].media[0],
   },
 }: Hero151Props) => {
+
+  const [results, setResults] = useState<Product[]>([]);
+
   return (
-    <section className="py-12">
-      <div className="items-center">
+    <section className="py-4">
+      <div className="flex flex-col items-center">
+        <SearchCustom
+          results={results}
+          setResults={setResults}
+        />
+
         <div className="flex flex-col items-center gap-8 md:flex-row-reverse">
           <div className="w-full flex-1 max-w-[50rem]">
             <div className="h-full w-full md:aspect-1/1">

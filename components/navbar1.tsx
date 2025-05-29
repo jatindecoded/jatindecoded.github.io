@@ -1,6 +1,7 @@
-import { Download, Menu } from "lucide-react";
+import { Download, Home, Menu } from "lucide-react";
 import properties from "../data/properties.json"
 import { Space_Grotesk } from "next/font/google"
+import { homePageHref, whatsappHref } from "./constants";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Image from "next/image";
+import Link from "next/link";
 
 interface MenuItem {
   title: string;
@@ -149,18 +151,18 @@ const Navbar1 = ({
   },
 }: Navbar1Props) => {
   return (
-    <section className="py-4 items-center bg-background">
+    <section className="py-4 items-center bg-background lg:px-10 px-4">
       <div className="items-center">
         {/* Desktop Menu */}
         <nav className="hidden justify-between lg:flex items-center">
           <div className="flex items-center gap-6">
             {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
+            <Link href={logo.url} className="flex items-center gap-2">
               <img src={logo.src} className="max-h-8 rounded-md border-1" alt={logo.alt} />
               <span className={`pt-0.5 text-md uppercase font-bold ${spaceGrotesk.className} tracking-tight`}>
                 {logo.title}
               </span>
-            </a>
+            </Link>
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
@@ -171,30 +173,52 @@ const Navbar1 = ({
           </div>
           <div className="flex gap-2">
             <Button asChild variant="outline" size="sm">
-              <a href={auth.login.url}><Download />{auth.login.title}</a>
+              <Link href={auth.login.url}><Download />{auth.login.title}</Link>
             </Button>
             <Button asChild size="sm">
-              <a href={auth.signup.url}>{auth.signup.title}</a>
+              <Link href={auth.signup.url}>{auth.signup.title}</Link>
             </Button>
           </div>
         </nav>
 
         {/* Mobile Menu */}
         <div className="block lg:hidden">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between items-start pt-1">
             {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
+            <Link href={logo.url} className="flex items-center gap-2">
               <img src={logo.src} className="max-h-8 border-1 rounded-md" alt={logo.alt} />
-            </a>
+            </Link>
 
-            <a className="pt-1 flex flex-col" href={whatsappHref}>
-              <span className={`text-md uppercase font-bold ${spaceGrotesk.className} tracking-tight `}>
-                {logo.title}
-              </span>
-              <a href={`tel:+91-${properties["contact.phone.visible"].value}`} className={`text-xs font-semibold text-muted-foreground text-center leading-[0.5] `}>
-                +91-{properties["contact.phone.visible"].value}
-              </a>
-            </a>
+            <Accordion type="single" collapsible className="w-full *:border-none cursor:pointer">
+              <AccordionItem value="item-1 border-none">
+                <AccordionTrigger className="text-center flex items-center justify-center [&>*:nth-last-child(1)]:hidden border-none hover:no-underline cursor:pointer py-0">
+                  <div className=" flex flex-col"
+                  >
+                    <span className={`text-md uppercase font-bold ${spaceGrotesk.className} tracking-tight `}>
+                      {logo.title}
+                    </span>
+                    {/* <Link
+                      // href={`tel:+91-${properties["contact.phone.visible"].value}`} 
+                      className={`text-xs font-semibold text-muted-foreground text-center leading-[0.5] `}> */}
+                    +91-{properties["contact.phone.visible"].value}
+                    {/* </Link> */}
+                  </div>
+
+                </AccordionTrigger>
+                <AccordionContent className="px-2 pt-4 pb-0 flex flex-col gap-2 items-center">
+                  <Link href={homePageHref} className="w-full">
+                    <Button variant={'outline'} size={'sm'} className="w-full">
+                      Go Home
+                    </Button>
+                  </Link>
+                  <Link href={whatsappHref} className="w-full">
+                    <Button size={'sm'} className="w-full">
+                      <img src={'/whatsapp.svg'} className="h-5 w-5" />Whatsapp us
+                    </Button>
+                  </Link>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
@@ -204,9 +228,9 @@ const Navbar1 = ({
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle>
-                    <a href={logo.url} className="flex items-center gap-2">
+                    <Link href={logo.url} className="flex items-center gap-2">
                       <img src={logo.src} className="max-h-8" alt={logo.alt} />
-                    </a>
+                    </Link>
                   </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4">
@@ -220,10 +244,10 @@ const Navbar1 = ({
 
                   <div className="flex flex-col gap-3">
                     <Button asChild variant="outline">
-                      <a href={auth.login.url}>{auth.login.title}</a>
+                      <Link href={auth.login.url}>{auth.login.title}</Link>
                     </Button>
                     <Button asChild>
-                      <a href={auth.signup.url}>{auth.signup.title}</a>
+                      <Link href={auth.signup.url}>{auth.signup.title}</Link>
                     </Button>
                   </div>
                 </div>
@@ -232,7 +256,7 @@ const Navbar1 = ({
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
@@ -284,15 +308,15 @@ const renderMobileMenuItem = (item: MenuItem) => {
   }
 
   return (
-    <a key={item.title} href={item.url} className="text-md font-semibold">
+    <Link key={item.title} href={item.url} className="text-md font-semibold">
       {item.title}
-    </a>
+    </Link>
   );
 };
 
 const SubMenuLink = ({ item }: { item: MenuItem }) => {
   return (
-    <a
+    <Link
       className="flex flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none hover:bg-muted hover:text-accent-foreground"
       href={item.url}
     >
@@ -305,10 +329,8 @@ const SubMenuLink = ({ item }: { item: MenuItem }) => {
           </p>
         )}
       </div>
-    </a>
+    </Link>
   );
 };
 
 export { Navbar1 };
-
-export const whatsappHref = `https://wa.me/91${properties["contact.phone.whatsapp"].value}?text=Hello%20Kenrax`;
