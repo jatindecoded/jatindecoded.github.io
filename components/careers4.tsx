@@ -104,9 +104,11 @@ const Careers4 = ({
               <Separator className="mb-2" />
               <div className="flex-col">
                 {
-                  product.compatibleWith.map((c) => {
+                  product.compatibleWith.map((c, idx) => {
                     return (
-                      <p className="font-bold">
+                      <p
+                        key={idx}
+                        className="font-bold">
                         {c}
                       </p>
                     )

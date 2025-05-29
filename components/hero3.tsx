@@ -9,6 +9,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collap
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
+import { buyNowHref, checkPriceHref } from "./constants";
 
 interface Hero3Props {
   product: Product | undefined
@@ -40,11 +41,11 @@ const Hero3 = ({
   buttons = {
     primary: {
       text: "Buy Now",
-      url: "https://www.shadcnblocks.com",
+      url: buyNowHref + product?.partNumber
     },
     secondary: {
-      text: "Check Price",
-      url: "https://www.shadcnblocks.com",
+      text: "Show Price",
+      url: checkPriceHref + product?.partNumber
     },
   },
   reviews = {
@@ -131,9 +132,11 @@ const Hero3 = ({
         <div className="flex justify-center items-start lg:mt-8 h-full order-0 lg:order-1 px-12">
           <Carousel>
             <CarouselContent>
-              {product?.images?.map((image => {
+              {product?.images?.map(((image, idx) => {
                 return (
-                  <CarouselItem className="place-items-center flex justify-center">
+                  <CarouselItem
+                    key={idx}
+                    className="place-items-center flex justify-center">
                     <Dialog>
                       <DialogTrigger className="place-items-center">
                         <img

@@ -1,4 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { UserRoundCheck } from "lucide-react";
 
 interface Testimonial10Props {
   testimonials?: {
@@ -54,7 +55,7 @@ const Testimonial10 = ({
                 <AvatarFallback>{testimonial.author.name}</AvatarFallback>
               </Avatar> */}
               <div className="center">
-                <p className="text-sm font-medium md:text-base center">{testimonial.author.name}</p>
+                <p className="text-sm font-medium md:text-base flex gap-2 justify-center mt-4 center"><UserRoundCheck className="text-(--primary)" />{testimonial.author.name}</p>
                 <p className="text-sm text-muted-foreground md:text-base">
                   {testimonial.author.role}
                 </p>

@@ -1,9 +1,10 @@
-"use client"
 import { Navbar1 } from "@/components/navbar1";
 import "./globals.css";
 import { Footer2 } from "@/components/footer2";
 import { ProgressProvider } from '@bprogress/next/app';
 import { Suspense } from "react";
+import Providers from "./providers";
+import properties from "@/data/properties.json"
 
 export default function RootLayout({
   children,
@@ -12,15 +13,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+      </head>
       <body
         className={`antialiased`}
       >
-        <ProgressProvider
-          height="4px"
-          color="oklch(0.59 0.1988 141.8)"
-        // options={{ showSpinner: false }}
-        // shallowRouting
-        >
+        <Providers>
           <header className="sticky top-0 z-50">
             <Navbar1 />
           </header>
@@ -32,8 +34,13 @@ export default function RootLayout({
             </div>
             <Footer2 />
           </div>
-        </ProgressProvider>
+        </Providers>
       </body>
     </html>
   );
 }
+
+export const metadata = {
+  title: properties["company.name"].value.split(" ")[0] + " - Air Oil Filters, Separators",
+  description: properties["meta.description"].value,
+};

@@ -1,5 +1,7 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import properties from "../data/properties.json"
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 const Contact7 = () => {
   return (
@@ -14,31 +16,32 @@ const Contact7 = () => {
           </p>
         </div>
         <div className="grid gap-10 md:grid-cols-3">
-          <a href={`tel:+91-${properties["contact.phone.visible"].value}`} className=" hover:underline">
-            <span className="mb-3 flex size-12 bg-(--color-primary) flex-col items-center justify-center rounded-xl text-white">
-              <img src={"/whatsapp.svg"} className="h-6 w-auto text-white!" />
-            </span>
-            <p className="text-lg font-semibold tracking-tight">WhatsApp or Call Us</p>
+          <Link href={`tel:+91-${properties["contact.phone.visible"].value}`} className="cursor:pointer">
+            <Button>
+              <img src={"/whatsapp.svg"} className="h-5 w-auto text-white!" />
+              Whatsapp
+            </Button>
+            <p className="text-xl mt-2 font-semibold tracking-tight">WhatsApp or Call Us</p>
             <p className="mb-4 text-muted-foreground text-sm">
               We&apos;re available Mon-Fri, 10am-6pm.
             </p>
             <div className="font-bold">
-              {/* <a href={`https://wa.me/91${properties["contact.phone.whatsapp"].value}?text=Hello%20Kenrax`} className="font-bold hover:underline"> */}
               +91-{properties["contact.phone.whatsapp"].value}
             </div>
-          </a>
-          <a href={`mailto:${properties["contact.email"].value}`} className="hover:underline">
-            <span className="mb-3 flex size-12 bg-(--color-primary) flex-col items-center justify-center rounded-xl text-white">
-              <Mail className="h-6 w-auto" />
-            </span>
-            <p className="text-lg font-semibold tracking-tight">Email Us</p>
+          </Link>
+          <Link href={`mailto:${properties["contact.email"].value}`} className="cursor:pointer">
+            <Button>
+              <Mail />
+              Mail
+            </Button>
+            <p className="text-xl mt-2 font-semibold tracking-tight">Email Us</p>
             <p className="mb-4 text-muted-foreground text-sm">
               Our team is ready to assist.
             </p>
             <div className="font-bold">
               {properties["contact.email"].value}
             </div>
-          </a>
+          </Link>
           {/* <div>
             <span className="mb-3 flex size-12 bg-(--color-primary) flex-col items-center justify-center rounded-xl text-white">
               <Phone className="h-6 w-auto" />
@@ -47,23 +50,23 @@ const Contact7 = () => {
             <p className="mb-4 text-muted-foreground text-sm">
               We&apos;re available Mon-Fri, 10am-6pm.
             </p>
-            <a href={`tel:+91-${properties["contact.phone.visible"].value}`} className="font-bold hover:underline">
+            <Link href={`tel:+91-${properties["contact.phone.visible"].value}`} className="font-bold cursor:pointer">
               +91-{properties["contact.phone.visible"].value}
-            </a>
+            </Link>
           </div> */}
-          <a target="_blank" href={`${properties["contact.location"].value}`} className=" hover:underline">
-            <span className="mb-3 flex size-12 bg-(--color-primary) flex-col items-center justify-center rounded-xl text-white">
-              <MapPin className="h-6 w-auto" />
-            </span>
-            <p className="text-lg font-semibold tracking-tight">Visit Us</p>
-            {/* <p className="mb-2 text-lg font-semibold">Visit Us</p> */}
+          <Link target="_blank" href={`${properties["contact.location"].value}`} className=" cursor:pointer">
+            <Button>
+              <MapPin />
+              Visit
+            </Button>
+            <p className="text-xl mt-2 font-semibold tracking-tight">Visit Us</p>
             <p className="mb-4 text-muted-foreground text-sm">
               Drop by our office for a chat.
             </p>
             <div className="font-bold">
               {properties["contact.address"].value}
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

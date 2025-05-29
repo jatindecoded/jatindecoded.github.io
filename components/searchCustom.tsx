@@ -94,7 +94,7 @@ export const SearchCustom = ({ results, setResults, activeFilters, setActiveFilt
 	}, [searchQuery])
 
 	return (
-		<div className="w-full relative mb-6 max-w-[600px] h-[36px] relative flex justify-center gap-1">
+		<div className="relative mb-6 h-[36px] relative flex justify-center gap-1">
 			{/* <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-3 w-3" />
 			<Input
 				value={searchQuery}
@@ -130,7 +130,7 @@ export const SearchCustom = ({ results, setResults, activeFilters, setActiveFilt
 								{results.map((product) => (
 									<CommandItem
 										key={product.url}
-										value={product.partNumber + " " + product.type}
+										value={product.partNumber + " - " + product.type}
 										onSelect={(currentValue) => {
 											setSearchQuery(currentValue === searchQuery ? "" : currentValue)
 											setOpen(false)
