@@ -1,7 +1,7 @@
 "use client";
 
 import AutoScroll from "embla-carousel-auto-scroll";
-import properties from "../data/properties.json"
+import properties from "../data/properties.json";
 
 import {
   Carousel,

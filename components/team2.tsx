@@ -1,20 +1,10 @@
 "use client"
-import { BoxSelect, Circle, Italic, Search, SeparatorHorizontal } from "lucide-react";
-import Image from "next/image";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
 import { Toggle } from "./ui/toggle";
-import { Product, toKebabCase } from "@/scripts/fetchNotionProducts";
-import Fuse from 'fuse.js';
-import { useEffect, useMemo, useState } from 'react';
-import { Badge } from "./ui/badge";
-import { Table, TableBody, TableCell, TableRow } from "./ui/table";
-import { Separator } from "./ui/separator";
+import { Product } from "@/scripts/fetchNotionProducts";
+import { useEffect, useState } from 'react';
 import ProductCard from "./productCard";
-import properties from "../data/properties.json"
 import { useSearchParams } from "next/navigation";
 import { SearchCustom } from "./searchCustom";
-import Link from "next/link";
 import { productsPageHref } from "./constants";
 
 

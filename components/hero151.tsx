@@ -1,17 +1,11 @@
 "use client"
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { Download, PhoneOutgoing, Search } from "lucide-react";
-import properties from "../data/properties.json"
-import { Input } from "./ui/input";
+import { Download, PhoneOutgoing } from "lucide-react";
+import properties from "../data/properties.json";
 import { useState } from "react";
-import { useRouter } from '@bprogress/next/app';
-import { productsPageHref } from "./constants";
 import { SearchCustom } from "./searchCustom";
 import { Product } from "@/scripts/fetchNotionProducts";
-import products from "@/data/products.json"
+import products from "@/data/products.json";
 
 interface Testimonial {
   quote: string;

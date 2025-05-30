@@ -1,6 +1,5 @@
 import { ChevronLeft } from "lucide-react";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Blog } from "@/scripts/fetchNotionBlogs";
 import { Separator } from "./ui/separator";
 

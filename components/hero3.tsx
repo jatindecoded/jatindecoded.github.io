@@ -1,16 +1,12 @@
 "use client"
 import { ArrowDownRight, Star } from "lucide-react";
 
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { Product } from "@/scripts/fetchNotionProducts";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import { buyNowHref, checkPriceHref } from "./constants";
-import properties from "@/data/properties.json"
+import properties from "@/data/properties.json";
 import { SearchCustom } from "./searchCustom";
 
 interface Hero3Props {

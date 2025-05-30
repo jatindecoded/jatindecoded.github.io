@@ -1,5 +1,5 @@
 import { BlogPost } from "@/components/blogPost";
-import blogs from "../../../data/blogs/blogs.json"
+import blogs from "../../../data/blogs/blogs.json";
 import { Blog8 } from "@/components/blog8";
 
 

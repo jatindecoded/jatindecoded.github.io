@@ -1,25 +1,14 @@
 "use client "
 import { Menu } from "lucide-react";
-import properties from "../data/properties.json"
-import { Space_Grotesk } from "next/font/google"
+import properties from "../data/properties.json";
+import { Space_Grotesk } from "next/font/google";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
+	Accordion
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import {
-	NavigationMenu,
-	NavigationMenuContent,
-	NavigationMenuItem,
-	NavigationMenuLink,
-	NavigationMenuList,
-	NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 import {
 	Sheet,
 	SheetContent,
@@ -27,7 +16,6 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from "@/components/ui/sheet";
-import Image from "next/image";
 import { useState } from "react";
 
 interface MenuItem {

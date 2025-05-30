@@ -1,5 +1,4 @@
-import Image from "next/image";
-import properties from "../data/properties.json"
+import properties from "../data/properties.json";
 import { Space_Grotesk } from "next/font/google";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] })

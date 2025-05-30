@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { UserRoundCheck } from "lucide-react";
 
 interface Testimonial10Props {

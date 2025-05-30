@@ -1,8 +1,7 @@
 import { ArrowRight } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
-import Image from "next/image";
-import blogs from "../data/blogs/blogs.json"
+import blogs from "../data/blogs/blogs.json";
 
 interface Post {
   id: string;

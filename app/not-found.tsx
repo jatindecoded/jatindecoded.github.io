@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import properties from "@/data/properties.json"
+import Link from 'next/link';
+import properties from "@/data/properties.json";
 
 export default function NotFound() {
 	const bg = properties["media.homepage.photo.1"].media[0];

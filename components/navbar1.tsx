@@ -1,6 +1,6 @@
-import { Download, Home, Menu } from "lucide-react";
-import properties from "../data/properties.json"
-import { Space_Grotesk } from "next/font/google"
+import { Download, Menu } from "lucide-react";
+import properties from "../data/properties.json";
+import { Space_Grotesk } from "next/font/google";
 import { homePageHref, whatsappHref } from "./constants";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
@@ -27,7 +27,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import Image from "next/image";
 import Link from "next/link";
 
 interface MenuItem {

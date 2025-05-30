@@ -1,7 +1,6 @@
 import { ChevronLeft } from "lucide-react";
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import Image from "next/image";
 
 const Blog10 = () => {
   return (

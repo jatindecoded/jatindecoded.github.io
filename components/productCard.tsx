@@ -1,7 +1,7 @@
-import { Product, toKebabCase } from "@/scripts/fetchNotionProducts"
-import { Separator } from "./ui/separator"
+import { Product, toKebabCase } from "@/scripts/fetchNotionProducts";
+import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
-import properties from "../data/properties.json"
+import properties from "../data/properties.json";
 
 export default function ProductCard({ product, descMaxLength = 80 }: { product: Product, descMaxLength?: number }) {
 

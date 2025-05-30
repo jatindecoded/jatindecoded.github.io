@@ -1,10 +1,9 @@
 import { Navbar1 } from "@/components/navbar1";
 import "./globals.css";
 import { Footer2 } from "@/components/footer2";
-import { ProgressProvider } from '@bprogress/next/app';
 import { Suspense } from "react";
 import Providers from "./providers";
-import properties from "@/data/properties.json"
+import properties from "@/data/properties.json";
 import { Inter } from "next/font/google";
 
 const InterFont = Inter({ subsets: ["latin"] })

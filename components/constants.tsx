@@ -1,4 +1,4 @@
-import properties from "@/data/properties.json"
+import properties from "@/data/properties.json";
 
 export const whatsappHref = `https://wa.me/91${properties["contact.phone.whatsapp"].value}?text=Hello%20Kenrax`;
 export const buyNowHref = whatsappHref + encodeURIComponent(", Please confirm Price and Stock Availability for the mentioned Product(s).\n");

@@ -1,7 +1,8 @@
-import { Mail, MapPin, Phone } from "lucide-react";
-import properties from "../data/properties.json"
+import { Mail, MapPin } from "lucide-react";
+import properties from "../data/properties.json";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { whatsappHref } from "./constants";
 
 const Contact7 = () => {
   return (
@@ -16,7 +17,10 @@ const Contact7 = () => {
           </p>
         </div>
         <div className="grid gap-10 md:grid-cols-3">
-          <Link href={`tel:+91-${properties["contact.phone.visible"].value}`} className="cursor:pointer">
+          <Link
+            // href={`tel:+91-${properties["contact.phone.visible"].value}`} 
+            href={whatsappHref}
+            className="cursor:pointer">
             <Button>
               <img src={"/whatsapp.svg"} className="h-5 w-auto text-white!" />
               Whatsapp

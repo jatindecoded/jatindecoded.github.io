@@ -1,19 +1,10 @@
-import { Beaker, BeakerIcon, Check, Leaf, LeafIcon, Search, SearchIcon } from "lucide-react";
-import { Input } from "./ui/input";
+import { BeakerIcon, Search, SearchIcon } from "lucide-react";
 import { useRouter } from '@bprogress/next/app';
 import { useSearchParams } from "next/navigation";
-import { Dispatch, useEffect, useMemo, useRef, useState } from "react";
+import { useState } from "react";
 import { productsPageHref } from "./constants";
 import { Button } from "./ui/button";
-import {
-	Calculator,
-	Calendar,
-	CreditCard,
-	Settings,
-	Smile,
-	User,
-} from "lucide-react"
-import products from "@/data/products.json"
+import products from "@/data/products.json";
 
 import {
 	Command,
@@ -21,17 +12,9 @@ import {
 	CommandGroup,
 	CommandInput,
 	CommandItem,
-	CommandList,
-	CommandSeparator,
-	CommandShortcut,
-} from "@/components/ui/command"
-import Fuse from "fuse.js";
-import { Product } from "@/scripts/fetchNotionProducts";
-import { AutoComplete } from "./ui/autocomplete";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "./ui/select";
+	CommandList
+} from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-import { cn } from "@/lib/utils";
-import { search } from "@notionhq/client/build/src/api-endpoints";
 import Link from "next/link";
 
 export const SearchCustom = ({ }: {
