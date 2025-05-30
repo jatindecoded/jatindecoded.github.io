@@ -98,6 +98,7 @@ export const SearchCustom = ({ }: {
 				<PopoverContent
 					sideOffset={-36}
 					className="w-[80vw] max-w-[600px] p-0 animate-[wiggle_10s_ease-in-out_infinite]!"
+					avoidCollisions={false}
 				>
 					<Command
 						filter={(value, search, keywords) => {
