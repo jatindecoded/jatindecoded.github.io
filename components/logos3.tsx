@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next-export-optimize-images/image'
 
 import AutoScroll from "embla-carousel-auto-scroll";
 import properties from "../data/properties.json";
@@ -96,7 +97,7 @@ const Logos3 = ({
                 >
                   <div className="mx-10 flex shrink-0 items-center justify-center">
                     <div>
-                      <img
+                      <Image
                         src={img}
                         alt={"OEM Logo"}
                         className={"h-14 w-auto"}
@@ -123,7 +124,7 @@ const Logos3 = ({
                 >
                   <div className="mx-10 flex shrink-0 items-center justify-center">
                     <div>
-                      <img
+                      <Image
                         src={img}
                         alt={"OEM Logo"}
                         className={"h-14 w-auto"}

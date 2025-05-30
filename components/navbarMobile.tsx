@@ -1,4 +1,5 @@
 "use client "
+import Image from 'next-export-optimize-images/image'
 import { Menu } from "lucide-react";
 import properties from "../data/properties.json";
 import { Space_Grotesk } from "next/font/google";
@@ -70,7 +71,7 @@ const NavbarMobile = ({
 			<div className="flex items-center justify-between">
 				{/* Logo */}
 				<a href={logo.url} className="flex items-center gap-2">
-					<img src={logo.src} className="max-h-8 border-1 rounded-md" alt={logo.alt} />
+					<Image src={logo.src} className="max-h-8 border-1 rounded-md" alt={logo.alt} />
 				</a>
 
 				<div className="pt-1 flex flex-col">
@@ -91,7 +92,7 @@ const NavbarMobile = ({
 						<SheetHeader>
 							<SheetTitle>
 								<a href={logo.url} className="flex items-center gap-2">
-									<img src={logo.src} className="max-h-8" alt={logo.alt} />
+									<Image src={logo.src} className="max-h-8" alt={logo.alt} />
 								</a>
 							</SheetTitle>
 						</SheetHeader>

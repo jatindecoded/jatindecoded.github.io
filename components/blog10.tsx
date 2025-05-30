@@ -1,3 +1,4 @@
+import Image from 'next-export-optimize-images/image'
 import { ChevronLeft } from "lucide-react";
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
@@ -34,7 +35,7 @@ const Blog10 = () => {
 
           <article className="mx-auto prose">
             <div>
-              <img
+              <Image
                 src="https://shadcnblocks.com/images/block/placeholder-1.svg"
                 alt="placeholder"
                 className="mt-0 mb-8 aspect-video w-full rounded-lg object-cover"

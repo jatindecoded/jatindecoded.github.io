@@ -1,3 +1,4 @@
+import Image from 'next-export-optimize-images/image'
 import { Mail, MapPin } from "lucide-react";
 import properties from "../data/properties.json";
 import { Button } from "./ui/button";
@@ -22,7 +23,7 @@ const Contact7 = () => {
             href={whatsappHref}
             className="cursor:pointer">
             <Button>
-              <img src={"/whatsapp.svg"} className="h-5 w-auto text-white!" />
+              <Image src={"/whatsapp.svg"} alt={'whatsapp'} className="h-5 w-auto text-white!" />
               Whatsapp
             </Button>
             <p className="text-xl mt-2 font-semibold tracking-tight">WhatsApp or Call Us</p>

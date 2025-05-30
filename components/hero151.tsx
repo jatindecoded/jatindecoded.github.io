@@ -1,4 +1,5 @@
 "use client"
+import Image from 'next-export-optimize-images/image'
 import { Button } from "@/components/ui/button";
 import { Download, PhoneOutgoing } from "lucide-react";
 import properties from "../data/properties.json";
@@ -83,28 +84,28 @@ const Hero151 = ({
             <div className="h-full w-full md:aspect-1/1">
               <div className="grid h-full w-full grid-cols-2 grid-rows-1 md:grid-rows-2 gap-[3.5%]">
                 <div className="aspect-5/4 md:aspect-auto overflow-hidden rounded-[5.2%] border border-muted bg-muted">
-                  <img
+                  <Image
                     src={images.first}
                     alt=""
                     className="object-cover h-full w-full object-center"
                   />
                 </div>
                 <div className="aspect-5/4 md:aspect-auto md:overflow-hidden rounded-[5.2%] border border-muted bg-muted">
-                  <img
+                  <Image
                     src={images.second}
                     alt=""
                     className="object-cover h-full w-full object-center"
                   />
                 </div>
                 <div className="hidden md:block overflow-hidden rounded-[5.2%] border border-muted bg-muted">
-                  <img
+                  <Image
                     src={images.third}
                     alt=""
                     className="object-cover h-full w-full object-center"
                   />
                 </div>
                 <div className="hidden md:block overflow-hidden rounded-[5.2%] border border-muted bg-muted">
-                  <img
+                  <Image
                     src={images.fourth}
                     alt=""
                     className="object-cover h-full w-full object-center"

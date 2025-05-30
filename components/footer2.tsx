@@ -1,3 +1,4 @@
+import Image from 'next-export-optimize-images/image'
 import properties from "../data/properties.json";
 import { Space_Grotesk } from "next/font/google";
 
@@ -101,7 +102,7 @@ const Footer2 = ({
             <div className="col-span-2 md:col-span-3 mb-8 lg:mb-0">
               <div className="flex items-center gap-2 lg:justify-start">
                 <a href={properties.domain.value}>
-                  <img
+                  <Image
                     src={logo.src}
                     alt={logo.alt}
                     title={logo.title}

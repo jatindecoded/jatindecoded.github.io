@@ -1,3 +1,4 @@
+import Image from 'next-export-optimize-images/image'
 import { ArrowUpRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -70,13 +71,13 @@ const Hero47 = ({
         </div>
         <div className="relative z-10">
           <div className="absolute top-2.5 !left-1/2 !h-[92%] !w-[69%] -translate-x-[52%] overflow-hidden rounded-[35px]">
-            <img
+            <Image
               src={image.src}
               alt={image.alt}
               className="size-full object-cover object-[50%_0%]"
             />
           </div>
-          <img
+          <Image
             className="relative z-10"
             src="https://shadcnblocks.com/images/block/mockups/phone-2.png"
             width={450}

@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
 
+const withExportImages = require('next-export-optimize-images')
+
 const isProd = process.env.NODE_ENV === 'production';
 
-const nextConfig: NextConfig = {
+const nextConfig: NextConfig = withExportImages({
   output: "export",
   eslint: {
     ignoreDuringBuilds: true,
@@ -10,7 +12,6 @@ const nextConfig: NextConfig = {
   // basePath: '/kenrax',
   // assetPrefix: '/kenrax/',
   // trailingSlash: true,
-  images: { unoptimized: true },
-};
+});
 
 export default nextConfig;

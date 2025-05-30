@@ -1,4 +1,5 @@
 "use client"
+import Image from 'next-export-optimize-images/image'
 import { ArrowDownRight, Star } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -139,14 +140,14 @@ const Hero3 = ({
                     className="place-items-center flex justify-center">
                     <Dialog>
                       <DialogTrigger className="place-items-center">
-                        <img
+                        <Image
                           src={image}
                           alt={product.partNumber}
                           className="max-h-[40vh] zoom-image md:max-h-[50vh] rounded-md"
                         />
                       </DialogTrigger>
                       <DialogContent className="place-items-center">
-                        <img
+                        <Image
                           src={image}
                           alt={product.partNumber}
                           className="max-h-[100vh] rounded-md"
@@ -162,7 +163,7 @@ const Hero3 = ({
                   <CarouselItem
                     // key={idx}
                     className="place-items-center flex justify-center relative">
-                    <img
+                    <Image
                       src={properties["media.homepage.photo.1"].media[0]}
                       alt={product.partNumber}
                       className="max-h-[40vh] zoom-image md:max-h-[50vh] rounded-md opacity-50 "

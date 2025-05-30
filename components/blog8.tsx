@@ -1,3 +1,4 @@
+import Image from 'next-export-optimize-images/image'
 import { ArrowRight } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
@@ -90,7 +91,7 @@ const Blog8 = ({
                 <div className="order-first sm:order-last sm:col-span-5">
                   <a href={"/blogs/" + post.slug} target="_blank" className="block">
                     <div className="aspect-[16/9] overflow-clip rounded-lg border border-border">
-                      <img
+                      <Image
                         src={post.coverImage}
                         alt={post.title}
                         className="h-full w-full object-cover transition-opacity duration-200 fade-in hover:opacity-70"

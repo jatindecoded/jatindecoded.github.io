@@ -8,6 +8,7 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import Image from 'next-export-optimize-images/image'
 
 interface Post {
   id: string;
@@ -103,7 +104,7 @@ const Blog7 = ({
                   target="_blank"
                   className="transition-opacity duration-200 fade-in hover:opacity-70"
                 >
-                  <img
+                  <Image
                     src={post.image}
                     alt={post.title}
                     className="h-full w-full object-cover object-center"

@@ -1,3 +1,4 @@
+import Image from 'next-export-optimize-images/image'
 import { Download, Menu } from "lucide-react";
 import properties from "../data/properties.json";
 import { Space_Grotesk } from "next/font/google";
@@ -157,7 +158,7 @@ const Navbar1 = ({
           <div className="flex items-center gap-6">
             {/* Logo */}
             <Link href={logo.url} className="flex items-center gap-2">
-              <img src={logo.src} className="max-h-8 rounded-md border-1" alt={logo.alt} />
+              <Image src={logo.src} className="max-h-8 rounded-md border-1" alt={logo.alt} />
               <span className={`pt-0.5 text-md uppercase font-bold ${spaceGrotesk.className} tracking-tight`}>
                 {logo.title}
               </span>
@@ -185,7 +186,7 @@ const Navbar1 = ({
           <div className="flex items-center justify-between items-start pt-1">
             {/* Logo */}
             <Link href={logo.url} className="flex items-center gap-2">
-              <img src={logo.src} className="max-h-8 border-1 rounded-md" alt={logo.alt} />
+              <Image src={logo.src} className="max-h-8 border-1 rounded-md" alt={logo.alt} />
             </Link>
 
             <Accordion type="single" collapsible className="w-full *:border-none cursor:pointer">
@@ -212,7 +213,7 @@ const Navbar1 = ({
                   </Link>
                   <Link href={whatsappHref} className="w-full">
                     <Button size={'sm'} className="w-full">
-                      <img src={'/whatsapp.svg'} className="h-5 w-5" />Whatsapp us
+                      <Image src={'/whatsapp.svg'} alt={'whatsapp'} className="h-5 w-5" />Whatsapp us
                     </Button>
                   </Link>
                 </AccordionContent>
@@ -228,7 +229,7 @@ const Navbar1 = ({
                 <SheetHeader>
                   <SheetTitle>
                     <Link href={logo.url} className="flex items-center gap-2">
-                      <img src={logo.src} className="max-h-8" alt={logo.alt} />
+                      <Image src={logo.src} className="max-h-8" alt={logo.alt} />
                     </Link>
                   </SheetTitle>
                 </SheetHeader>

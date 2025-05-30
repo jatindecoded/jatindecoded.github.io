@@ -1,3 +1,4 @@
+import Image from 'next-export-optimize-images/image'
 import { Product, toKebabCase } from "@/scripts/fetchNotionProducts";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
@@ -20,7 +21,7 @@ export default function ProductCard({ product, descMaxLength = 80 }: { product: 
 			key={product.id} className="flex flex-col lg:items-start items-center h-full" >
 			{
 				product.images?.[0] ? (
-					<img
+					<Image
 						src={product.images?.[0]}
 						alt={product.partNumber}
 						className="w-full aspect-4/5 object-cover rounded-sm mb-4 md:mb-5"

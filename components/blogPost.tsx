@@ -1,3 +1,4 @@
+import Image from 'next-export-optimize-images/image'
 import { ChevronLeft } from "lucide-react";
 import React from "react";
 import { Blog } from "@/scripts/fetchNotionBlogs";
@@ -71,7 +72,7 @@ const BlogPost = ({ blog }: { blog: Blog }) => {
 					? block.image.external.url
 					: block.image.file.url;
 				return (
-					<img
+					<Image
 						key={idx}
 						src={src}
 						alt="blog graphic"
@@ -118,7 +119,7 @@ const BlogPost = ({ blog }: { blog: Blog }) => {
 	// 			);
 	// 		case "image":
 	// 			return (
-	// 				<img
+	// 				<Image
 	// 					key={idx}
 	// 					src={block.src}
 	// 					alt="blog graphic"
@@ -181,7 +182,7 @@ const BlogPost = ({ blog }: { blog: Blog }) => {
 
 					<article className="mx-auto prose prose-headings:scroll-mt-20 max-w-none dark:prose-invert leading-7">
 						{coverImage && (
-							<img
+							<Image
 								src={coverImage}
 								alt="cover"
 								className="mt-0 mb-8 aspect-video w-full rounded-lg object-cover"

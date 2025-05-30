@@ -104,7 +104,7 @@ const Gallery6 = ({
           className="relative left-[-1rem]"
         >
           <CarouselContent className="-mr-4 ml-8 2xl:mr-[max(0rem,calc(50vw-700px-1rem))] 2xl:ml-[max(8rem,calc(50vw-700px+1rem))]">
-            {products.map((item) => (
+            {products.slice(0, 10).map((item) => (
               <CarouselItem key={item.id} className="pl-4 max-w-[252px]">
                 <ProductCard product={item} descMaxLength={0} />
               </CarouselItem>
