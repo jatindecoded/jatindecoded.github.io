@@ -1,4 +1,4 @@
-import { BeakerIcon, Search, SearchIcon } from "lucide-react";
+import { PackageOpen, Search, SearchIcon } from "lucide-react";
 import { useRouter } from '@bprogress/next/app';
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -128,7 +128,7 @@ export const SearchCustom = ({ }: {
 									>
 										<Link href={product.url} className="flex gap-4 w-full justify-between">
 											<div className="flex gap-2 items-center">
-												<BeakerIcon />
+												<PackageOpen />
 												<span>
 													{product.partNumber}
 												</span>
