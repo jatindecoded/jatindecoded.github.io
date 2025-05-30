@@ -5,6 +5,9 @@ import { ProgressProvider } from '@bprogress/next/app';
 import { Suspense } from "react";
 import Providers from "./providers";
 import properties from "@/data/properties.json"
+import { Inter } from "next/font/google";
+
+const InterFont = Inter({ subsets: ["latin"] })
 
 export default function RootLayout({
   children,
@@ -20,7 +23,7 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body
-        className={`antialiased`}
+        className={`antialiased ${InterFont.className}`}
       >
         <Providers>
           <header className="sticky top-0 z-50">
