@@ -141,16 +141,20 @@ const Hero3 = ({
                     <Dialog>
                       <DialogTrigger className="place-items-center">
                         <Image
+                          width={400}
+                          height={500}
                           src={image}
                           alt={product.partNumber}
-                          className="max-h-[40vh] zoom-image md:max-h-[50vh] rounded-md"
+                          className="object-contain max-h-[40vh] zoom-image md:max-h-[50vh] rounded-md"
                         />
                       </DialogTrigger>
                       <DialogContent className="place-items-center">
                         <Image
+                          width={1000}
+                          height={1000}
                           src={image}
                           alt={product.partNumber}
-                          className="max-h-[100vh] rounded-md"
+                          className="object-contain max-h-[100vh] rounded-md"
                         />
                       </DialogContent>
                     </Dialog>
@@ -164,9 +168,11 @@ const Hero3 = ({
                     // key={idx}
                     className="place-items-center flex justify-center relative">
                     <Image
+                      width={400}
+                      height={500}
                       src={properties["media.homepage.photo.1"].media[0]}
                       alt={product.partNumber}
-                      className="max-h-[40vh] zoom-image md:max-h-[50vh] rounded-md opacity-50 "
+                      className="object-contain max-h-[40vh] zoom-image md:max-h-[50vh] rounded-md opacity-50 "
                     />
                     <div className="flex items-center flex-col absolute font-bold opacity-80">
                       <span className="uppercase">

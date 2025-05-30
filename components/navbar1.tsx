@@ -158,7 +158,7 @@ const Navbar1 = ({
           <div className="flex items-center gap-6">
             {/* Logo */}
             <Link href={logo.url} className="flex items-center gap-2">
-              <Image src={logo.src} className="max-h-8 rounded-md border-1" alt={logo.alt} />
+              <Image width={36} height={36} src={logo.src} className="object-contain rounded-md border-1" alt={logo.alt} />
               <span className={`pt-0.5 text-md uppercase font-bold ${spaceGrotesk.className} tracking-tight`}>
                 {logo.title}
               </span>
@@ -183,13 +183,13 @@ const Navbar1 = ({
 
         {/* Mobile Menu */}
         <div className="block lg:hidden">
-          <div className="flex items-center justify-between items-start pt-1">
+          <div className="flex items-start justify-between pt-1">
             {/* Logo */}
             <Link href={logo.url} className="flex items-center gap-2">
-              <Image src={logo.src} className="max-h-8 border-1 rounded-md" alt={logo.alt} />
+              <Image width={36} height={36} src={logo.src} className="h-[36px] w-[36px] border-1 rounded-md" alt={logo.alt} />
             </Link>
 
-            <Accordion type="single" collapsible className="w-full *:border-none cursor:pointer">
+            <Accordion type="single" collapsible className="flex-1 *:border-none cursor:pointer">
               <AccordionItem value="item-1 border-none">
                 <AccordionTrigger className="text-center flex items-center justify-center [&>*:nth-last-child(1)]:hidden border-none hover:no-underline cursor:pointer py-0">
                   <div className=" flex flex-col"
@@ -213,7 +213,7 @@ const Navbar1 = ({
                   </Link>
                   <Link href={whatsappHref} className="w-full">
                     <Button size={'sm'} className="w-full">
-                      <Image src={'/whatsapp.svg'} alt={'whatsapp'} className="h-5 w-5" />Whatsapp us
+                      <Image width={36} height={36} src={'/whatsapp.svg'} alt={'whatsapp'} className="object-contain h-5 w-5" />Whatsapp us
                     </Button>
                   </Link>
                 </AccordionContent>
@@ -221,15 +221,15 @@ const Navbar1 = ({
             </Accordion>
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon">
-                  <Menu className="size-4" />
+                <Button variant="outline" size="icon" className='h-[36x] w-[36px]'>
+                  <Menu className="" />
                 </Button>
               </SheetTrigger>
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle>
                     <Link href={logo.url} className="flex items-center gap-2">
-                      <Image src={logo.src} className="max-h-8" alt={logo.alt} />
+                      <Image height={36} width={36} src={logo.src} className="object-contain border-1 rounded-md" alt={logo.alt} />
                     </Link>
                   </SheetTitle>
                 </SheetHeader>

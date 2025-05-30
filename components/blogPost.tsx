@@ -72,7 +72,7 @@ const BlogPost = ({ blog }: { blog: Blog }) => {
 					? block.image.external.url
 					: block.image.file.url;
 				return (
-					<Image
+					<img
 						key={idx}
 						src={src}
 						alt="blog graphic"
@@ -93,64 +93,6 @@ const BlogPost = ({ blog }: { blog: Blog }) => {
 	};
 
 
-	// const renderBlock = (block: Block, idx: number) => {
-	// 	switch (block.type) {
-	// 		case "heading": {
-	// 			const level = Math.min(Math.max(block.level ?? 2, 1), 6) as 1 | 2 | 3 | 4 | 5 | 6;
-	// 			const Tag = (`h${level}` as unknown) as React.ElementType;
-	// 			return <Tag key={idx} className={`text-${4 - level === 1 ? "" : 4 - level}xl font-bold py-4 tracking-tight`}>{block.text}</Tag>;
-	// 		}
-	// 		case "paragraph":
-	// 			if (!block.html) {
-	// 				return null;
-	// 			}
-	// 			else {
-	// 				return <p key={idx} dangerouslySetInnerHTML={{ __html: block.html }} />;
-	// 			}
-	// 		case "blockquote":
-	// 			return <blockquote key={idx}>{block.text}</blockquote>;
-	// 		case "list":
-	// 			return (
-	// 				<ul key={idx}>
-	// 					{block.items!.map((it, i) => (
-	// 						<li key={i}>{it}</li>
-	// 					))}
-	// 				</ul>
-	// 			);
-	// 		case "image":
-	// 			return (
-	// 				<Image
-	// 					key={idx}
-	// 					src={block.src}
-	// 					alt="blog graphic"
-	// 					className="mt-0 mb-8 aspect-video w-full rounded-lg object-cover"
-	// 				/>
-	// 			);
-	// 		case "table":
-	// 			return (
-	// 				<table key={idx}>
-	// 					<thead>
-	// 						<tr>
-	// 							{block.rows?.[0].map((h, i) => (
-	// 								<th key={i}>{h}</th>
-	// 							))}
-	// 						</tr>
-	// 					</thead>
-	// 					<tbody>
-	// 						{block.rows?.slice(1).map((row, r) => (
-	// 							<tr key={r} className="m-0 border-t p-0 even:bg-muted">
-	// 								{row.map((cell, c) => (
-	// 									<td key={c}>{cell}</td>
-	// 								))}
-	// 							</tr>
-	// 						))}
-	// 					</tbody>
-	// 				</table>
-	// 			);
-	// 		default:
-	// 			return null;
-	// 	}
-	// };
 
 	return (
 		<section className="py-8">
@@ -182,7 +124,7 @@ const BlogPost = ({ blog }: { blog: Blog }) => {
 
 					<article className="mx-auto prose prose-headings:scroll-mt-20 max-w-none dark:prose-invert leading-7">
 						{coverImage && (
-							<Image
+							<img
 								src={coverImage}
 								alt="cover"
 								className="mt-0 mb-8 aspect-video w-full rounded-lg object-cover"

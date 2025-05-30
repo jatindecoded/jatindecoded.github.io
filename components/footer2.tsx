@@ -103,10 +103,12 @@ const Footer2 = ({
               <div className="flex items-center gap-2 lg:justify-start">
                 <a href={properties.domain.value}>
                   <Image
+                    height={36}
+                    width={36}
                     src={logo.src}
                     alt={logo.alt}
                     title={logo.title}
-                    className="h-10 border-1 rounded-md"
+                    className="border-1 rounded-md"
                   />
                 </a>
                 <p className={`${spaceGrotesk.className} uppercase text-md font-bold`}>{logo.title}</p>

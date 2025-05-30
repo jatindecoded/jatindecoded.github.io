@@ -40,7 +40,7 @@ const Stats8 = ({
   ],
 }: Stats8Props) => {
   return (
-    <section className="py-8">
+    <section className="py-16">
       <div className="items-center">
         <div className="flex flex-col">
           <h2 className="text-2xl font-bold md:text-4xl tracking-tight">{heading}</h2>

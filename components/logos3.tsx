@@ -98,9 +98,11 @@ const Logos3 = ({
                   <div className="mx-10 flex shrink-0 items-center justify-center">
                     <div>
                       <Image
+                        width={100}
+                        height={100}
                         src={img}
                         alt={"OEM Logo"}
-                        className={"h-14 w-auto"}
+                        className={"object-contain h-14 w-auto"}
                       />
                     </div>
                   </div>
@@ -111,33 +113,6 @@ const Logos3 = ({
           <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-background to-transparent"></div>
           <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-background to-transparent"></div>
         </div>
-        {/* <div className="md:hidden mt-12 relative mx-auto flex items-center justify-center lg:max-w-5xl">
-          <Carousel
-            opts={{ loop: true }}
-            plugins={[AutoScroll({ playOnInit: true })]}
-          >
-            <CarouselContent className="ml-0">
-              {properties["media.oem.logos"].media.map((img, idx) => (
-                <CarouselItem
-                  key={idx}
-                  className="flex basis-1/3 justify-center pl-0 sm:basis-1/4 md:basis-1/5 lg:basis-1/6"
-                >
-                  <div className="mx-10 flex shrink-0 items-center justify-center">
-                    <div>
-                      <Image
-                        src={img}
-                        alt={"OEM Logo"}
-                        className={"h-14 w-auto"}
-                      />
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-          <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-background to-transparent"></div>
-          <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-background to-transparent"></div>
-        </div> */}
         <div className="mt-16 text-xs text-muted-foreground">
           Logos of OEMs shown—like Atlas Copco, Ingersoll Rand, Elgi, etc.—belong to their respective owners. Kenrax Industries is not affiliated with them; logos are used only to indicate product compatibility.
         </div>

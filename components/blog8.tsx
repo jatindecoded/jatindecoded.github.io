@@ -92,6 +92,8 @@ const Blog8 = ({
                   <a href={"/blogs/" + post.slug} target="_blank" className="block">
                     <div className="aspect-[16/9] overflow-clip rounded-lg border border-border">
                       <Image
+                        width={1600}
+                        height={900}
                         src={post.coverImage}
                         alt={post.title}
                         className="h-full w-full object-cover transition-opacity duration-200 fade-in hover:opacity-70"

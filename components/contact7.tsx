@@ -23,7 +23,7 @@ const Contact7 = () => {
             href={whatsappHref}
             className="cursor:pointer">
             <Button>
-              <Image src={"/whatsapp.svg"} alt={'whatsapp'} className="h-5 w-auto text-white!" />
+              <Image height={40} width={40} src={"/whatsapp.svg"} alt={'whatsapp'} className="h-5 w-auto text-white!" />
               Whatsapp
             </Button>
             <p className="text-xl mt-2 font-semibold tracking-tight">WhatsApp or Call Us</p>

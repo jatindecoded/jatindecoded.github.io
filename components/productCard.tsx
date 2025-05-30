@@ -22,9 +22,11 @@ export default function ProductCard({ product, descMaxLength = 80 }: { product: 
 			{
 				product.images?.[0] ? (
 					<Image
+						width={400}
+						height={500}
 						src={product.images?.[0]}
 						alt={product.partNumber}
-						className="w-full aspect-4/5 object-cover rounded-sm mb-4 md:mb-5"
+						className="object-contain w-full aspect-4/5 object-cover rounded-sm mb-4 md:mb-5"
 					/>
 				) : (
 					<FallbackProductImage product={product} />
