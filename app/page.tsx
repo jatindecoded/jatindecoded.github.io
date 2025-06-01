@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     description: "Kenrax is a trusted manufacturer and supplier of OEM replacement air filters, oil filters, air-oil separators, and hydraulic filters for screw air compressors. We deliver high-quality spares compatible with Atlas Copco, Ingersoll Rand, Elgi, CP, Kaeser, and more.",
     images: [
       {
-        url: `https://kenrax.in/${properties["media.homepage.photo.1"].media}`, // replace with actual image path if dynamic path is not available
+        url: `https://kenrax.in/og_image.png`,
         width: 640,
         height: 800,
         alt: "Kenrax Filters"
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     description: "Explore Kenrax's range of OEM replacement air filters, oil filters, separators, and more. Built for reliability and performance across all major air compressor brands.",
     images: [
       {
-        url: `https://kenrax.in/${properties["media.homepage.photo.1"].media}`,
+        url: `https://kenrax.in/og_image.png`,
         width: 640,
         height: 800,
         alt: "Kenrax Filters"
