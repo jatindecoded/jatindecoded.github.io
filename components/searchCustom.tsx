@@ -98,11 +98,11 @@ export const SearchCustom = ({ }: {
 					avoidCollisions={false}
 				>
 					<Command
-						filter={(value, search, keywords) => {
+						filter={(_, search, keywords) => {
 							const searchValue =
-								keywords && keywords.length > 0 ? keywords.join(" ") : value;
+								keywords && keywords.length > 0 ? keywords.join(" ") : "";
 
-							return searchValue.toLowerCase().includes(search.toLowerCase()) ? 1 : 0;
+							return searchValue.toLowerCase().replaceAll(" ", "").includes(search.toLowerCase().replaceAll(" ", "")) ? 1 : 0;
 						}}
 					>
 						<CommandInput
