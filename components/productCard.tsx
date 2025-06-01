@@ -39,18 +39,10 @@ export default function ProductCard({ product, descMaxLength = 80 }: { product: 
 				<div className="order-1 md:order-none text-muted-foreground text-xs flex-1 self-end">OEMs</div>
 				<div className="order-3 md:order-none text-muted-foreground text-xs flex-1 md:text-right self-end pt-2 md:pt-none">Compatible with</div>
 				<div className="order-2 md:order-none flex-1 text-xs font-semibold line-clamp-2">
-					{product.OEMs.map((OEM, idx) => {
-						return (
-							<span key={idx}>{OEM}{idx == product.OEMs.length - 1 ? "" : ", "}</span>
-						)
-					})}
+					{product.OEMs.join(", ")}
 				</div>
 				<div className="order-4 md:order-none flex-1 md:text-right text-xs font-semibold pb-1 md:pb-none line-clamp-2">
-					{product.compatibleWith.map((c, idx) => {
-						return (
-							<p key={idx}>{c}{idx == product.compatibleWith.length - 1 ? "" : ", "}</p>
-						)
-					})}
+					{product.compatibleWith.slice(0, 10).join(", ")}
 				</div>
 			</div>
 			<div className="w-full">
@@ -60,8 +52,8 @@ export default function ProductCard({ product, descMaxLength = 80 }: { product: 
 				</p>
 			</div>
 			<div className="mt-2 flex flex-col justify-end items-stretch w-full gap-2 flex-1 items-end">
-				<Button key={product.id + "1"}>Buy Now</Button>
-				<Button key={product.id + "2"} variant={"outline"}>Get Price</Button>
+				<Button aria-label={'Buy Now'} key={product.id + "1"}>Buy Now</Button>
+				<Button aria-label={'Get Price'} key={product.id + "2"} variant={"outline"}>Get Price</Button>
 			</div>
 		</a>
 	)

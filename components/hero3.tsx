@@ -88,12 +88,12 @@ const Hero3 = ({
           </h1>
           <div className="my-8 flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
             {buttons.primary && (
-              <Button asChild className="w-full sm:w-auto">
+              <Button aria-label={buttons.primary.text} asChild className="w-full sm:w-auto">
                 <a href={buttons.primary.url}>{buttons.primary.text}</a>
               </Button>
             )}
             {buttons.secondary && (
-              <Button asChild variant="outline">
+              <Button aria-label={buttons.secondary.text} asChild variant="outline">
                 <a href={buttons.secondary.url}>
                   {buttons.secondary.text}
                   <ArrowDownRight className="size-4" />

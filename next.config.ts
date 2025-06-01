@@ -2,12 +2,23 @@ import type { NextConfig } from "next";
 
 const withExportImages = require('next-export-optimize-images')
 
-const isProd = process.env.NODE_ENV === 'production';
-
 const nextConfig: NextConfig = withExportImages({
   output: "export",
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  async headers() {
+    return [
+      {
+        source: "/(.*)\\.(png|jpg|jpeg|woff2|css|js|svg|ico)$",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=604800, immutable", // 7 days
+          },
+        ],
+      },
+    ];
   },
   // basePath: '/kenrax',
   // assetPrefix: '/kenrax/',

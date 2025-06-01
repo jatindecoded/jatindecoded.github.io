@@ -54,7 +54,7 @@ const Faq5 = () => {
               </span>
               <div>
                 <div className="mb-2 flex items-center justify-between">
-                  <h3 className="font-medium">{faq.question}</h3>
+                  <h2 className="font-medium">{faq.question}</h2>
                 </div>
                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
               </div>

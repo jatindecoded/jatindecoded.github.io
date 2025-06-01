@@ -1,6 +1,5 @@
 import { PackageOpen, Search, SearchIcon } from "lucide-react";
 import { useRouter } from '@bprogress/next/app';
-import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { productsPageHref } from "./constants";
 import { Button } from "./ui/button";
@@ -24,9 +23,6 @@ export const SearchCustom = ({ }: {
 	// setActiveFilters?: Dispatch<React.SetStateAction<String[]>>;
 
 }) => {
-	const searchParams = useSearchParams();
-	const name = searchParams.get('name');
-	// const [searchQuery, setSearchQuery] = useState('');
 	const router = useRouter();
 
 	const [open, setOpen] = useState(false)
@@ -85,6 +81,7 @@ export const SearchCustom = ({ }: {
 			<Popover open={open} onOpenChange={setOpen} >
 				<PopoverTrigger asChild className="h-full">
 					<Button
+						aria-label="Search products..."
 						variant="input"
 						role="combobox"
 						aria-expanded={open}
@@ -152,6 +149,7 @@ export const SearchCustom = ({ }: {
 				</PopoverContent>
 			</Popover>
 			<Button
+				aria-label="Search"
 				className="h-full"
 				onClick={onSubmitQuery}
 			>

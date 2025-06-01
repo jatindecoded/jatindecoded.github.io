@@ -2,13 +2,23 @@ import { Team2 } from "@/components/team2";
 import products from '../../data/products.json'
 import { Metadata } from "next";
 import properties from "@/data/properties.json"
+import { Suspense } from "react";
 
 export default async function Home() {
   return (
     <>
-      <Team2
-        products={products}
-      />
+      <Suspense
+        fallback={
+          <div className="text-center w-full min-h-[80vh] flex flex-col place-items-center justify-center font-bold tracking-tight text-xl">
+            <img src="/spinner.svg" width={96} />
+            <span className="mt-[-20px]">Loading product details...</span>
+          </div>
+        }
+      >
+        <Team2
+          products={products}
+        />
+      </Suspense>
     </>
   );
 }

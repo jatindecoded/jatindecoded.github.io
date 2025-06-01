@@ -85,8 +85,9 @@ const Hero151 = ({
               <div className="grid h-full w-full grid-cols-2 grid-rows-1 md:grid-rows-2 gap-[1.5%]">
                 <div className="aspect-5/4 overflow-hidden rounded-[5.2%] border border-muted bg-muted">
                   <Image
-                    width={500}
-                    height={400}
+                    priority
+                    width={250}
+                    height={200}
                     src={images.first}
                     alt=""
                     className="object-cover h-full w-full object-center"
@@ -94,8 +95,9 @@ const Hero151 = ({
                 </div>
                 <div className="aspect-5/4 overflow-hidden rounded-[5.2%] border border-muted bg-muted">
                   <Image
-                    width={500}
-                    height={400}
+                    priority
+                    width={250}
+                    height={200}
                     src={images.second}
                     alt=""
                     className="object-cover h-full w-full object-center"
@@ -103,8 +105,9 @@ const Hero151 = ({
                 </div>
                 <div className="hidden aspect-5/4 md:block overflow-hidden rounded-[5.2%] border border-muted bg-muted">
                   <Image
-                    width={500}
-                    height={400}
+                    priority
+                    width={250}
+                    height={200}
                     src={images.third}
                     alt=""
                     className="object-cover h-full w-full object-center"
@@ -112,8 +115,9 @@ const Hero151 = ({
                 </div>
                 <div className="hidden aspect-5/4 md:block overflow-hidden rounded-[5.2%] border border-muted bg-muted">
                   <Image
-                    width={500}
-                    height={400}
+                    priority
+                    width={250}
+                    height={200}
                     src={images.fourth}
                     alt=""
                     className="object-cover h-full w-full object-center"
@@ -145,10 +149,10 @@ const Hero151 = ({
               </a>
             </div>
             <div className="my-6 lg:my-10 gap-4 gap-y-2 flex flex-wrap">
-              <Button asChild size="lg">
+              <Button aria-label={button.text} asChild size="lg">
                 <a href={button.url} target="_blank">{button.text}</a>
               </Button>
-              <Button asChild size="lg" variant='outline'>
+              <Button aria-label={button2.text} asChild size="lg" variant='outline'>
                 <a href={button2.url} target="_blank"><Download />{button2.text}</a>
               </Button>
             </div>

@@ -33,9 +33,9 @@ export default function RootLayout({
           </header>
           <div className="lg:px-10 px-4">
             <div className="lg: px-2">
-              <Suspense>
-                {children}
-              </Suspense>
+              {/* <Suspense> */}
+              {children}
+              {/* </Suspense> */}
             </div>
             <Footer2 />
           </div>

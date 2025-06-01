@@ -172,10 +172,10 @@ const Navbar1 = ({
             </div>
           </div>
           <div className="flex gap-2">
-            <Button asChild variant="outline" size="sm">
+            <Button aria-label={auth.login.title} asChild variant="outline" size="sm">
               <Link href={auth.login.url}><Download />{auth.login.title}</Link>
             </Button>
-            <Button asChild size="sm">
+            <Button aria-label={auth.signup.title} asChild size="sm">
               <Link href={auth.signup.url}>{auth.signup.title}</Link>
             </Button>
           </div>
@@ -207,12 +207,12 @@ const Navbar1 = ({
                 </AccordionTrigger>
                 <AccordionContent className="px-2 pt-4 pb-0 flex flex-col gap-2 items-center">
                   <Link href={homePageHref} className="w-full">
-                    <Button variant={'outline'} size={'sm'} className="w-full">
+                    <Button aria-label={'Go Home'} variant={'outline'} size={'sm'} className="w-full">
                       Go Home
                     </Button>
                   </Link>
                   <Link href={whatsappHref} className="w-full">
-                    <Button size={'sm'} className="w-full">
+                    <Button aria-label={'Whatsapp Us'} size={'sm'} className="w-full">
                       <Image width={36} height={36} src={'/whatsapp.svg'} alt={'whatsapp'} className="object-contain h-5 w-5" />Whatsapp us
                     </Button>
                   </Link>
@@ -221,7 +221,7 @@ const Navbar1 = ({
             </Accordion>
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className='h-[36x] w-[36px]'>
+                <Button aria-label='Menu' variant="outline" size="icon" className='h-[36x] w-[36px]'>
                   <Menu className="" />
                 </Button>
               </SheetTrigger>
@@ -243,10 +243,10 @@ const Navbar1 = ({
                   </Accordion>
 
                   <div className="flex flex-col gap-3">
-                    <Button asChild variant="outline">
+                    <Button aria-label={auth.login.title} asChild variant="outline">
                       <Link href={auth.login.url}>{auth.login.title}</Link>
                     </Button>
-                    <Button asChild>
+                    <Button aria-label={auth.signup.title} asChild>
                       <Link href={auth.signup.url}>{auth.signup.title}</Link>
                     </Button>
                   </div>

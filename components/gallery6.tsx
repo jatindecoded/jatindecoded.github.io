@@ -66,6 +66,7 @@ const Gallery6 = ({
           </a>
           <div className="mt-8 flex shrink-0 items-center justify-start gap-2">
             <Button
+              aria-label="left"
               size="icon"
               variant="outline"
               onClick={() => {
@@ -77,6 +78,7 @@ const Gallery6 = ({
               <ArrowLeft className="size-5" />
             </Button>
             <Button
+              aria-label="right"
               size="icon"
               variant="outline"
               onClick={() => {

@@ -22,7 +22,7 @@ const Contact7 = () => {
             // href={`tel:+91-${properties["contact.phone.visible"].value}`} 
             href={whatsappHref}
             className="cursor:pointer">
-            <Button>
+            <Button aria-label='Whatsapp Us'>
               <Image height={40} width={40} src={"/whatsapp.svg"} alt={'whatsapp'} className="h-5 w-auto text-white!" />
               Whatsapp
             </Button>
@@ -35,7 +35,7 @@ const Contact7 = () => {
             </div>
           </Link>
           <Link href={`mailto:${properties["contact.email"].value}`} className="cursor:pointer">
-            <Button>
+            <Button aria-label='Mail Us'>
               <Mail />
               Mail
             </Button>
@@ -60,7 +60,7 @@ const Contact7 = () => {
             </Link>
           </div> */}
           <Link target="_blank" href={`${properties["contact.location"].value}`} className=" cursor:pointer">
-            <Button>
+            <Button aria-label='Visit Us'>
               <MapPin />
               Visit
             </Button>
