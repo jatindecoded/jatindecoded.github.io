@@ -20,6 +20,25 @@ export default async function Page({ params }: ProductPageProps) {
     return Home();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.partNumber,
+    "description": product.description,
+    "sku": product.partNumber,
+    "brand": {
+      "@type": "Brand",
+      "name": product.OEMs.join(", ") || "Kenrax"
+    },
+    "image": `https://kenrax.in/${product.images[0] || properties["media.homepage.photo.1"].media[0]}`,
+    "offers": {
+      "@type": "Offer",
+      "url": `https://kenrax.in/product/${slug}`,
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+
   return (
     <div>
       <Hero3 product={product} />
@@ -45,17 +64,58 @@ export async function generateMetadata(
     (p) => toKebabCase(p.partNumber) === slug
   ) ?? null;
 
-  var title = null;
-  var description = null
-  if (product && product.partNumber) {
-    title = (product.partNumber) + (product.type && (" - " + product.type))
-  }
-  if (product && product.description) {
-    description = product.description
-  }
-  return {
-    ...(title ? { title } : {}),
-    ...(description ? { description } : {}),
-  }
-}
+  if (!product) return {};
 
+  const brand = product.OEMs.join(", ") || "Kenrax";
+  const partNumber = product.partNumber;
+  const type = product.type || "Filter | Separator";
+  const title = `${partNumber} - ${type}`;
+  const description = product.description ||
+    `Buy ${brand} replacement ${type} - ${partNumber} for industrial air compressors. High-quality, compatible with OEMs.`;
+
+  const keywords = [
+    `${brand} Replacement ${type}`,
+    `${brand} ${type}`,
+    `${partNumber} ${brand}`,
+    `${type} for ${brand}`,
+    `${partNumber} replacement filter`,
+    "Air Compressor Spare Parts",
+    "OEM Replacement Filters",
+    "Kenrax Filters"
+  ];
+
+  const imageUrl = `https://kenrax.in/${product.images[0] || properties["media.homepage.photo.1"].media[0]}`;
+
+  return {
+    title,
+    description,
+    keywords,
+    openGraph: {
+      title,
+      description,
+      url: `https://kenrax.in/product/${slug}`,
+      type: "website",
+      images: [
+        {
+          url: imageUrl,
+          width: 640,
+          height: 800,
+          alt: title
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [
+        {
+          url: imageUrl,
+          width: 640,
+          height: 800,
+          alt: title
+        }
+      ]
+    }
+  };
+}

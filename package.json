@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run saveNotion && next build && next-export-optimize-images",
+    "postbuild": "next-sitemap",
     "saveNotion": "npx ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/saveNotionData.ts",
     "start": "next start",
     "deploy": "npm run build && gh-pages -d out"
@@ -35,6 +36,7 @@
     "gh-pages": "^6.3.0",
     "lucide-react": "^0.508.0",
     "next": "15.3.2",
+    "next-sitemap": "^4.2.3",
     "react": "^19.1.0",
     "react-dom": "^19.0.0",
     "react-notion-x": "^7.3.0",
